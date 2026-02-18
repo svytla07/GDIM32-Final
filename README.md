@@ -22,3 +22,4 @@ Put your individual final Devlog here.
 
 ## Open-Source Assets
 Cite any open-source assets here. Put them in a LIST, and use correctly formatted LINKS.
+[Pot Asset](https://www.cgtrader.com/items/5036369/download-page)
