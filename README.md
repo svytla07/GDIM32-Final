@@ -21,7 +21,8 @@ Put your individual final Devlog here.
 Put your individual final Devlog here.
 
 ## Open-Source Assets
-Cite any open-source assets here. Put them in a LIST, and use correctly formatted LINKS.
 [Pot Asset](https://www.cgtrader.com/items/5036369/download-page)
+
 [Terrain Heightmap](https://assetstore.unity.com/packages/tools/terrain/stampit-collection-free-heightmaps-for-unity-6-microverse-gaia-t-218286?clickref=1100lC35LG7U&utm_source=partnerize&utm_medium=affiliate&utm_campaign=unity_affiliate)
+
 [Cute Animals](https://assetstore.unity.com/packages/3d/characters/animals/little-friends-cartoon-animals-lite-262505)
