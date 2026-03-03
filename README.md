@@ -15,8 +15,10 @@ Besides, I used a free and open-source piece of music online as the background m
 I created the player object and worked on the Player class and coded the basic movement for the player object using the Update method, which was then later tweaked by my teammate. I also coded the camera movement so that the camera follows the player object as it moves, which also was done in the LateUpdate method that runs after all of the other Update methods in Unity runs, including the Update method used for the Player movement which makes the camera move after the player moves. I put this method in a class called CameraMovement that I attached as a component to the Camera. 
 
 I felt like the proposal we came up with was a bit more helpful than our break-down was since in our break down we sorta missed some key classes and objects we needed which we had to add later to the breakdown, an example of this being the CameraController class. The Proposal was able to help us fix our breakdown as we ran into issues since it provided everybody on our team a clear idea of what the project needed to do. Using Trello to organize our tasks was also a big help as we were able to list all of the tasks that needed to be completed and then delegate them to everyone. I think the future when it comes to panning I will try to be as detailed as possible in the ideas that I come up with so that they are interpreted in the way that I wanted them to be and are easier for my teammates to implenet without needing to ask me for clarification. 
-#### Team Member Name 3
-Put your individual check-in Devlog here.
+#### Team Member Mira Liu
+I created the terrain, painted it, imported assets to decorate it, as well as setting up the inventory class and the ui for it. I implemented some of the ingredient assets that are to be collected. I've made a Inventory, Dropped Item, Item Ui, InventoryUI class and Items as a scriptable object. I stored each individual ingredients data as rumpled code, and then attached them to a Dropped Item Prefab. 
+
+The proposal has served as a nice guideline to my coding of the UI, however a description for inventory was not written down, so I kinda had to improvise. None of the features mentioned for the UI have been properly implemented just yet, but I have placed placeholders. The proposal was very organized in the sense that everyone knew their tasks. However, the breakdown was a little more vague. In the future, the breakdown could be a little more detailed and strict so that people know the design of such and can follow it. We used Trello to assign tasks for the week, and I had a clear idea of what I was supposed to do. In the future, I think I could approach the execution with better planning as well as consistent communication. 
 
 
 ## Final Submission
@@ -38,4 +40,7 @@ Put your individual final Devlog here.
 
 [Grass and Vegetation](https://assetstore.unity.com/packages/3d/environments/low-poly-trees-and-vegetation-pack-265300)
 
-[Cute Animals](https://assetstore.unity.com/packages/3d/characters/animals/little-friends-cartoon-animals-lite-262505)
+[Cute Animals Player and NPC](https://assetstore.unity.com/packages/3d/characters/animals/little-friends-cartoon-animals-lite-262505)
+
+[Chicken png]()
+[Cow png]
