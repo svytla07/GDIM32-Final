@@ -10,31 +10,50 @@ public class NPC : MonoBehaviour
         Noodles, Beef, Chicken, Spices, Water, Sugar, Salt, Herbs
     }
 
-    public class customerOrder
+    [SerializeField]  List<Ingredients> order = new List<Ingredients>();
+
+
+
+    private Ingredients _order(int randomizedIngredients)
     {
-        private Ingredients _order;
-        
-      
-   
-           
-
-
+        switch (randomizedIngredients)
+        {
+            default: return Ingredients.Noodles;
+            case 1: return Ingredients.Beef;
+            case 2: return Ingredients.Chicken;
+            case 3: return Ingredients.Spices;
+            case 4: return Ingredients.Water;
+            case 5: return Ingredients.Sugar;
+            case 6: return Ingredients.Spices;
+            case 7: return Ingredients.Herbs;
+        }
     }
 
 
     void Start()
     {
-        int usedIngredients = 0;
+        
         for (int i = 0; i < 4; i++)
         {
-            int randomizedusedIngredients = Random.Range(1, 7);
-            Debug.Log(Random.Range(1, 7));
+           int randomizedIngredients = Random.Range(0, 7);
+           order.Add(_order(randomizedIngredients));
+
         }
+
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+ 
+    
+   
+            
+    
         
-    }
+    
 }
+    
+
+
+    // Update is called once per frame
+   
+
