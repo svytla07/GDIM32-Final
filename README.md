@@ -42,5 +42,6 @@ Put your individual final Devlog here.
 
 [Cute Animals Player and NPC](https://assetstore.unity.com/packages/3d/characters/animals/little-friends-cartoon-animals-lite-262505)
 
-[Chicken png]()
-[Cow png]
+[Chicken png](https://www.kindpng.com/imgv/TmhwRhm_minecraft-7-chuckles-the-chicken-minecraft-hd-png/)
+
+[Cow png](https://www.kindpng.com/imgv/TRoJTJT_raw-beef-plush-minecraft-hd-png-download/)
