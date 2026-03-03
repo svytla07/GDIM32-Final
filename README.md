@@ -1,7 +1,9 @@
 # GDIM32-Final
 ## Check-In
+
 ### Group Devlog
-### Team Member Beiduo Jin
+
+#### Team Member Beiduo Jin
 
 During this stage of development, I mainly completed the core control system of the game, including the writing of Player.cs and GameController.cs, as well as the setting of background music in the scenes. In the Player section, I implemented the basic movement and jumping logic, using variables such as moveSpeed and jumpForce, and handled input and physics movement in Update() and FixedUpdate(). I also set up the collision detection for the player (OnCollisionEnter2D, OnTriggerEnter2D), and built the Rigidbody2D and Collider2D components of the Player GameObject in Unity. The GameController section is responsible for managing the game flow. I implemented the GameState enumeration, StartGame(), EndGame(), and AddScore() methods, and made it interact with the UI and Player. In addition, I created a separate BGM Player GameObject and added an AudioSource to enable the background music to play in a loop. 
 
@@ -9,9 +11,9 @@ Reviewing the Proposal and W7 breakdown provided me with an overall direction. H
 
 Besides, I used a free and open-source piece of music online as the background music. [audio link](https://mixkit.co/free-stock-music/chillout/)
 
-### Team Member Name 2
+#### Team Member Name 2
 Put your individual check-in Devlog here.
-### Team Member Name 3
+#### Team Member Name 3
 Put your individual check-in Devlog here.
 
 
