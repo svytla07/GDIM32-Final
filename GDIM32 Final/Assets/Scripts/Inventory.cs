@@ -1,50 +1,77 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 
-[RequireComponent(typeof(Collider))]
 public class Inventory : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] InventoryUI ui;
-    [SerializeField] AudioSource audioSource; 
+    [SerializeField]
+    InventoryUI ui;
+    [SerializeField]
+    AudioSource audioSource;
 
-    [Header("audio clips")]
-    [SerializeField] AudioClip pickUpItemAudio;
+    [Header("Prefabs")]
+    [SerializeField]
+    GameObject droppedItemPrefab;
+
+    [Header("Audio Clips")]
+    [SerializeField]
+    AudioClip pickUpItemAudio;
+    [SerializeField]
+    AudioClip dropItemAudio;
 
     [Header("State")]
+    [SerializeField]
     Dictionary<string, Item> inventory = new();
-    public Item item; 
-    public bool pickedUp; 
-   
-    void Start()
-    {
-        Initialize(item);
-    }
 
-    public void Initialize(Item item)
+    void Update()
     {
-        this.item = item; 
-    }
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Ingredient"))
-        {
-            
-            Inventory ingredientData = other.GetComponent<Inventory>(); 
-            if (ingredientData == null || ingredientData.pickedUp) return;
-            ingredientData.pickedUp = true; 
-            AddItem(item);
-            audioSource.PlayOneShot(pickUpItemAudio);
-            Debug.Log("item picked up!"); 
+        if (Input.GetMouseButtonDown(0))
+        {   
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Debug.Log("Click detected");
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {   
+                if (hit.collider.CompareTag("DroppedItem"))
+                 {
+                        var droppedItem = hit.collider.GetComponent<DroppedItem>();
+                         
+                      if (droppedItem.pickedUp) return;
+    
+                     droppedItem.pickedUp = true;
+                    AddItem(droppedItem.item);
+                     Destroy(hit.collider.gameObject);
+                    audioSource.PlayOneShot(pickUpItemAudio);
+                 }
+                 
+            }
+        
         }
     }
+  
     void AddItem(Item item)
     {
-        var inventoryID = Guid.NewGuid().ToString();
-        inventory.Add(inventoryID, item);
-        ui.AddUIItem(inventoryID, item); 
+        var inventoryId = Guid.NewGuid().ToString();
+        inventory.Add(inventoryId, item);
+        ui.AddUIItem(inventoryId, item);
+    }
+
+    public void DropItem(string inventoryId)
+    {
+        Vector3 spawnPosition = transform.position + transform.forward * 1f + Vector3.up * 0.5f;
+        var droppedItemObj = Instantiate(droppedItemPrefab, spawnPosition, Quaternion.identity);
+
+        var playerCollider = GetComponent<Collider>();
+        var itemCollider = droppedItemObj.GetComponent<Collider>();
+        Physics.IgnoreCollision(playerCollider, itemCollider);
+        var droppedItem = droppedItemObj.GetComponent<DroppedItem>();
+
+        var item = inventory.GetValueOrDefault(inventoryId);
+        droppedItem.Initialize(item);
+        inventory.Remove(inventoryId);
+        ui.RemoveUIItem(inventoryId);
+        audioSource.PlayOneShot(dropItemAudio);
     }
 }

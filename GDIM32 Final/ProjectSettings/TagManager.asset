@@ -6,14 +6,15 @@ TagManager:
   tags:
   - Ground
   - Ingredient
+  - DroppedItem
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Item
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

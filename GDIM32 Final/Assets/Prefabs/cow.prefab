@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: 1102780790900533120}
   - component: {fileID: -2397875631144959256}
   - component: {fileID: 591587704156972030}
-  - component: {fileID: -3926665029001489732}
-  - component: {fileID: 2831284103652727448}
+  - component: {fileID: 3341498855682940415}
   m_Layer: 0
   m_Name: cow
-  m_TagString: Ingredient
+  m_TagString: DroppedItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf80f7bb85964f9aaa973382b186596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-3926665029001489732
+--- !u!114 &3341498855682940415
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,28 +129,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2225456856522832643}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 886178ab2f04b48dc89864de22345970, type: 3}
+  m_Script: {fileID: 11500000, guid: 0216aaefeb6631e4d805539eb1a15e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ui: {fileID: 0}
-  audioSource: {fileID: 0}
-  pickUpItemAudio: {fileID: 0}
-  item: {fileID: 0}
-  pickedUp: 0
---- !u!114 &2831284103652727448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2225456856522832643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 886178ab2f04b48dc89864de22345970, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ui: {fileID: 0}
-  audioSource: {fileID: 0}
-  pickUpItemAudio: {fileID: 0}
+  autoStart: 0
+  enabledPickupDelay: 3
   item: {fileID: 11400000, guid: be91c0867051f488b9552dcf02e217c1, type: 2}
   pickedUp: 0

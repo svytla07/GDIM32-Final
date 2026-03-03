@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b4cc3e3d52c246e3af3dbfb9e5edf78, type: 3}
+  m_Script: {fileID: 11500000, guid: bd2bec453adaac846b5d8c8117b0da27, type: 3}
   m_Name: Cow
   m_EditorClassIdentifier: 
-  id: cow
-  description: beef
+  id: Cow
+  description: cow
   icon: {fileID: 21300000, guid: 232300f7ae9fb4e77854e4701935387b, type: 3}
-  Prefab: {fileID: 0}
+  prefab: {fileID: 2225456856522832643, guid: 68ff18f4e66f24d2280bb773f796cccd, type: 3}
