@@ -11,8 +11,11 @@ Reviewing the Proposal and W7 breakdown provided me with an overall direction. H
 
 Besides, I used a free and open-source piece of music online as the background music. [audio link](https://mixkit.co/free-stock-music/chillout/)
 
-#### Team Member Name 2
-Put your individual check-in Devlog here.
+#### Team Member : Sahasra Vytla
+### Sahasra Vytla
+I created the player object and worked on the Player class and coded the basic movement for the player object using the Update method, which was then later tweaked by my teammate. I also coded the camera movement so that the camera follows the player object as it moves, which also was done in the LateUpdate method that runs after all of the other Update methods in Unity runs, including the Update method used for the Player movement which makes the camera move after the player moves. I put this method in a class called CameraMovement that I attached as a component to the Camera. 
+
+I felt like the proposal we came up with was a bit more helpful than our break-down was since in our break down we sorta missed some key classes and objects we needed which we had to add later to the breakdown, an example of this being the CameraController class. The Proposal was able to help us fix our breakdown as we ran into issues since it provided everybody on our team a clear idea of what the project needed to do. Using Trello to organize our tasks was also a big help as we were able to list all of the tasks that needed to be completed and then delegate them to everyone. I think the future when it comes to panning I will try to be as detailed as possible in the ideas that I come up with so that they are interpreted in the way that I wanted them to be and are easier for my teammates to implenet without needing to ask me for clarification. 
 #### Team Member Name 3
 Put your individual check-in Devlog here.
 
