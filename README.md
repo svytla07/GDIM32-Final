@@ -6,7 +6,7 @@ During this stage of development, I mainly completed the core control system of 
 
 Reviewing the Proposal and W7 breakdown provided me with an overall direction. However, during the actual development process, I found that the original plan was not detailed enough, especially in terms of the input handling for the Player, the structure of the state machine, and the way UI updates were handled. More details needed to be added when writing the code. Although the architecture was not significantly changed, I did continuously adjust method names, variable structures, and component settings throughout the process. To track progress, I also used a simple task list to record the functions that needed to be completed. In the future, I will write more specifically during the planning stage, such as listing out the methods and variables of each class, as well as the GameObject hierarchy structure required in the scene. This will reduce the occurrence of repeated modifications during development.
 
-Besides, I used a free and open-source piece of music online as the background music. The following is the source: https://mixkit.co/free-stock-music/chillout/
+Besides, I used a free and open-source piece of music online as the background music. [audio link]-(https://mixkit.co/free-stock-music/chillout/)
 
 ### Team Member Name 2
 Put your individual check-in Devlog here.
