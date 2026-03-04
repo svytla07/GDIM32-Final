@@ -35,15 +35,15 @@ public class Player : MonoBehaviour
             movement.x = -1;
         }
 
-        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             movement.x = 1;
         }
 
         transform.Translate(movement * _moveSpeed * Time.deltaTime);
 
-        float rotation = Input.GetAxis("Horizontal") * _turnSpeed * Time.deltaTime;
-        transform.Rotate(0, rotation, 0);
+        //float rotation = Input.GetAxis("Horizontal") * _turnSpeed * Time.deltaTime;
+       // transform.Rotate(0, rotation, 0);
 
         transform.Rotate(new Vector3(-Input.GetAxis("Mouse Y") * _mouseSpeed, Input.GetAxis("Mouse X") * _mouseSpeed, 0));
     }
