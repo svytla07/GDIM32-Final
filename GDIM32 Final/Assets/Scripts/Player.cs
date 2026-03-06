@@ -5,9 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     
-    [SerializeField] private float _turnSpeed = 5f;
-    [SerializeField] private float _moveSpeed = 5f;
-    [SerializeField] private float _mouseSpeed = 3.5f;
+    [SerializeField] public float _turnSpeed = 5f;
+    [SerializeField] public float _moveSpeed = 5f;
+    [SerializeField] public float _mouseSpeed = 3.5f;
 
     void Start()
     {
@@ -45,6 +45,6 @@ public class Player : MonoBehaviour
         //float rotation = Input.GetAxis("Horizontal") * _turnSpeed * Time.deltaTime;
        // transform.Rotate(0, rotation, 0);
 
-        transform.Rotate(new Vector3(-Input.GetAxis("Mouse Y") * _mouseSpeed, Input.GetAxis("Mouse X") * _mouseSpeed, 0));
+       // transform.Rotate(new Vector3(-Input.GetAxis("Mouse Y") * _mouseSpeed, Input.GetAxis("Mouse X") * _mouseSpeed, 0));
     }
 }
