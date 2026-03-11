@@ -1202,6 +1202,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &829851104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829851098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 364cf23a6ecf69240991bdaea341d518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  order: 
+--- !u!114 &829851105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829851098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38c478b2a84c5b848a6e182ef5dd0d37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &850277038
 GameObject:
   m_ObjectHideFlags: 0
@@ -1578,6 +1603,10 @@ PrefabInstance:
     - target: {fileID: 2252299958436166048, guid: 3fa49ed0d061b4436b24706796b78be6, type: 3}
       propertyPath: m_Radius
       value: 0.61756325
+      objectReference: {fileID: 0}
+    - target: {fileID: 2252299958436166048, guid: 3fa49ed0d061b4436b24706796b78be6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2252299958436166048, guid: 3fa49ed0d061b4436b24706796b78be6, type: 3}
       propertyPath: m_Center.x
@@ -2178,6 +2207,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LittleCat
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d7061d2ec501adb4da1e842bf1f2be57, type: 3}
+      propertyPath: m_TagString
+      value: StartManagerDialogue
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: d7061d2ec501adb4da1e842bf1f2be57, type: 3}
       propertyPath: m_Controller
       value: 
@@ -2189,6 +2222,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d7061d2ec501adb4da1e842bf1f2be57, type: 3}
       insertIndex: -1
       addedObject: {fileID: 829851101}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d7061d2ec501adb4da1e842bf1f2be57, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 829851104}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d7061d2ec501adb4da1e842bf1f2be57, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 829851105}
   m_SourcePrefab: {fileID: 100100000, guid: d7061d2ec501adb4da1e842bf1f2be57, type: 3}
 --- !u!1001 &1500252191
 PrefabInstance:

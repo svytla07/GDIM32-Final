@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC : MonoBehaviour
+public class Manager : MonoBehaviour
 {
     // Start is called before the first frame update
     public enum Ingredients
@@ -24,8 +24,7 @@ public class NPC : MonoBehaviour
             case 3: return Ingredients.Spices;
             case 4: return Ingredients.Water;
             case 5: return Ingredients.Sugar;
-            case 6: return Ingredients.Spices;
-            case 7: return Ingredients.Herbs;
+            case 6: return Ingredients.Herbs;
         }
     }
 
@@ -35,7 +34,7 @@ public class NPC : MonoBehaviour
         
         for (int i = 0; i < 4; i++)
         {
-           int randomizedIngredients = Random.Range(0, 7);
+           int randomizedIngredients = Random.Range(0, 6);
            order.Add(_order(randomizedIngredients));
 
         }

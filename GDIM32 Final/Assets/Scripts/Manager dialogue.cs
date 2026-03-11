@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Dialogue : MonoBehaviour
 {
     // Start is called before the first frame update
  
@@ -15,6 +16,10 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0) & CompareTag("StartManagerDialogue"))
+        {
+            Ray CatRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            UnityEngine.Debug.Log("Click on cat");
+        }
     }
 }
