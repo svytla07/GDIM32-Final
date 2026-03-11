@@ -24,17 +24,17 @@ public class Pot : MonoBehaviour
     
     }
 
-    protected virtual void OnTriggerEnter(Collider collider)
-    {
-        if (other.CompareTag("ingredient"))
-        {
-            OnIngredientTriggered()
-        }
-    }
+   // protected virtual void OnTriggerEnter(Collider collider)
+    //{
+       // if (other.CompareTag("ingredient"))
+        //{
+           // OnIngredientTriggered()
+      //  }
+  //  }
 
-    protected virtual void OnIngredientTriggered()
-    {
-        check for 
+    //protected virtual void OnIngredientTriggered()
+   // {
+        
 
-    }
+   // }
 }
