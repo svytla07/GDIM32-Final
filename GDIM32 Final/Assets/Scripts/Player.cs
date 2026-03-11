@@ -1,50 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    
-    [SerializeField] public float _turnSpeed = 5f;
-    [SerializeField] public float _moveSpeed = 5f;
-    [SerializeField] public float _mouseSpeed = 3.5f;
+    public float moveSpeed = 5f;
+    public float turnSpeed = 180f; // 每秒旋转角度
 
-    void Start()
-    {
-    
-
-    }
-
-    
     void Update()
     {
-        Vector3 movement = Vector3.zero;
+        float h = Input.GetAxisRaw("Horizontal"); // A/D
+        float v = Input.GetAxisRaw("Vertical");   // W/S
 
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+        // A/D 控制旋转
+        if (h != 0)
         {
-            movement.z = 1;
+            transform.Rotate(Vector3.up, h * turnSpeed * Time.deltaTime);
         }
 
-        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        // W/S 控制前后移动
+        if (v != 0)
         {
-            movement.z = -1;
+            transform.Translate(Vector3.forward * v * moveSpeed * Time.deltaTime);
         }
-
-        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            movement.x = -1;
-        }
-
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            movement.x = 1;
-        }
-
-        transform.Translate(movement * _moveSpeed * Time.deltaTime);
-
-        //float rotation = Input.GetAxis("Horizontal") * _turnSpeed * Time.deltaTime;
-       // transform.Rotate(0, rotation, 0);
-
-       // transform.Rotate(new Vector3(-Input.GetAxis("Mouse Y") * _mouseSpeed, Input.GetAxis("Mouse X") * _mouseSpeed, 0));
     }
 }
