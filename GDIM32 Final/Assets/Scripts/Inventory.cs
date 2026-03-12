@@ -61,14 +61,15 @@ public class Inventory : MonoBehaviour
     public void DropItem(string inventoryId)
     {
         Vector3 spawnPosition = transform.position + transform.forward * 1f + Vector3.up * 0.5f;
-        var droppedItemObj = Instantiate(droppedItemPrefab, spawnPosition, Quaternion.identity);
+        var droppedItemObj = Instantiate(item.prefab, spawnPosition, Quaternion.identity);
 
         var playerCollider = GetComponent<Collider>();
         var itemCollider = droppedItemObj.GetComponent<Collider>();
         Physics.IgnoreCollision(playerCollider, itemCollider);
+        
         var droppedItem = droppedItemObj.GetComponent<DroppedItem>();
 
-        var item = inventory.GetValueOrDefault(inventoryId);
+        
         droppedItem.Initialize(item);
         inventory.Remove(inventoryId);
         ui.RemoveUIItem(inventoryId);
