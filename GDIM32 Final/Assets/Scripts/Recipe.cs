@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Recipie : MonoBehaviour
+public class Recipe : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public List<item> requiredIngredients; 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Item result;
+
+    public float cooktime = 3f; 
 }
