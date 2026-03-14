@@ -2,24 +2,32 @@
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float turnSpeed = 180f; // 每秒旋转角度
+    [SerializeField] private float _moveSpeed = 5f;
 
     void Update()
     {
-        float h = Input.GetAxisRaw("Horizontal"); // A/D
-        float v = Input.GetAxisRaw("Vertical");   // W/S
+        Vector3 movement = Vector3.zero;
 
-        // A/D 控制旋转
-        if (h != 0)
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
-            transform.Rotate(Vector3.up, h * turnSpeed * Time.deltaTime);
+            movement.z = 1;
         }
 
-        // W/S 控制前后移动
-        if (v != 0)
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            transform.Translate(Vector3.forward * v * moveSpeed * Time.deltaTime);
+            movement.z = -1;
         }
+
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            movement.x = -1;
+        }
+
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            movement.x = 1;
+        }
+
+        transform.Translate(movement * _moveSpeed * Time.deltaTime);
     }
 }
