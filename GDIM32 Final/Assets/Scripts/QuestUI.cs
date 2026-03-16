@@ -25,7 +25,8 @@ public class QuestUI : MonoBehaviour
         {
             questText.text = "Cook the Beef Pho";
         }
-        else if (gather.state == QuestState.Completed && cookChicken.state == QuestState.Completed && cookBeef.state == QuestState.Completed) {
+        else if (gather.state == QuestState.Completed && cookChicken.state == QuestState.Completed && cookBeef.state == QuestState.Completed)
+        {
             questText.text = "All quests completed!";
         }
         else
