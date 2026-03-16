@@ -22,16 +22,19 @@ public class Pot : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         meshRenderer = GetComponent<MeshRenderer>();
+
+        if (_cookingUi != null) _cookingUi.SetActive(false);
+        if (_cookingUi != null) _checkMark.SetActive(false);
     }
 
-    protected virtual void OnTriggerEnter(Collider collider)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (_currentState != PotState.Empty) return;
 
         // 注意 Tag 大小写必须一致
-        if (collider.CompareTag("Ingredient"))
+        if (GetComponent<Collider>().CompareTag("Ingredient"))
         {
-            var droppedItem = collider.GetComponent<DroppedItem>();
+            var droppedItem = GetComponent<Collider>().GetComponent<DroppedItem>();
 
             // droppedItem == null 才应该 return
             if (droppedItem == null) return;

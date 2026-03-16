@@ -3,31 +3,16 @@
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 5f;
+    [SerializeField] private Transform orientation; 
 
     void Update()
     {
-        Vector3 movement = Vector3.zero;
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
 
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
-        {
-            movement.z = 1;
-        }
+        Vector3 movement = orientation.forward * vertical + orientation.right * horizontal;
+        
 
-        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-        {
-            movement.z = -1;
-        }
-
-        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            movement.x = -1;
-        }
-
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            movement.x = 1;
-        }
-
-        transform.Translate(movement * _moveSpeed * Time.deltaTime);
+        transform.Translate(movement.normalized * _moveSpeed * Time.deltaTime, Space.World);
     }
 }
