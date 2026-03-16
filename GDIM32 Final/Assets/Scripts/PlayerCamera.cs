@@ -14,6 +14,7 @@ public class PlayerCamera : MonoBehaviour
 
     void Start()
     {
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -26,13 +27,14 @@ public class PlayerCamera : MonoBehaviour
 
         yRotation += mouseX;
         //yRotation = Mathf.Clamp(yRotation, -90f, 90f);
-
+       
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
 
+        
         if (Input.GetKeyDown(KeyCode.Escape)) {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -43,4 +45,5 @@ public class PlayerCamera : MonoBehaviour
             Cursor.visible = false;
         }
     }
+
 }
