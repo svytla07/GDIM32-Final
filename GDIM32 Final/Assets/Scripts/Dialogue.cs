@@ -6,7 +6,7 @@ using UnityEngine;
 public class Dialogue : MonoBehaviour
 {
     // Start is called before the first frame update
- 
+    
  
     void Start()
     {
@@ -21,5 +21,13 @@ public class Dialogue : MonoBehaviour
             Ray CatRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             UnityEngine.Debug.Log("Click on cat");
         }
+        
+
+
+        if (GetComponent<Manager>(_order)= pot) 
+
+
+
+
     }
 }
