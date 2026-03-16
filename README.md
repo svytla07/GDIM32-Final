@@ -23,11 +23,29 @@ The proposal has served as a nice guideline to my coding of the UI, however a de
 
 ## Final Submission
 ### Group Devlog
-Put your group Devlog here.
+Our final project uses three major design patterns—Model–View–Controller (MVC), Finite State Machine (FSM), and the Singleton pattern—to organize player interaction, NPC dialogue, and quest flow.
+
+1. MVC Architecture  
+We used MVC to structure both the player controller and the NPC interaction system. Scripts like PlayerMovement.cs and PlayerCamera.cs act as Controllers, processing input and updating the View (the player model and camera). The dialogue UI and interaction prompts form the View, while dialogue data and quest states act as the Model. This separation made it easy to update UI, input, or movement logic without breaking the others.
+
+2. Finite State Machine (FSM)  
+Our NPC interaction relies on an FSM to manage states such as Idle, Interactable, InDialogue, and QuestGiven. The Dialogue.cs script transitions between these states when the player looks at an NPC, clicks to open dialogue, chooses branching options, receives a quest, completes a task, and turns it in to unlock new dialogue. FSM prevented tangled conditional logic and made branching dialogue predictable and extendable.
+
+3. Singleton Pattern  
+We used Singletons for global systems like the DialogueManager and QuestManager. These managers handle displaying prompts, loading dialogue branches, tracking quest progress, and updating NPC responses. Having a single shared instance ensured consistent behavior across scenes and allowed any script to access dialogue or quest data without passing references.
+
+Together, these patterns helped us build a clean, modular interaction system where player actions, NPC dialogue, and quests work smoothly as a unified experience.
 
 
-### Team Member Name 1
-Put your individual final Devlog here.
+### Team Member Name: Beiduo Jin
+
+Since the Check‑In, my contributions focused on building core gameplay systems and stabilizing the project. I implemented the StartMenu.cs script, which pauses the game on launch, displays the start menu UI, and resumes gameplay when the player closes the menu. I also imported external UI assets and converted them into usable Unity prefabs, integrating them into the scene and wiring them to the menu logic.
+
+I contributed to the player controller by modifying both PlayerMovement.cs and PlayerCamera.cs. This included adjusting Rigidbody‑based movement, fixing orientation alignment, and correcting mouse‑driven camera rotation to achieve proper FPS controls. I also configured the player prefab in Unity by assigning components such as Rigidbody, camera references, and orientation transforms.
+
+Beyond feature work, I resolved multiple merge conflicts involving player and camera scripts, ensuring our team’s final versions remained consistent. I additionally fixed several runtime errors, including null references caused by missing tags or unassigned variables in scripts like Dialogue.cs.
+
+Overall, my work helped stabilize the project and ensured the core player experience functioned smoothly.
 ### Team Member Name 2
 Put your individual final Devlog here.
 ### Team Member Name 3
