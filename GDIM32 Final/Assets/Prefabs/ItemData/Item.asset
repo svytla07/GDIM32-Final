@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd2bec453adaac846b5d8c8117b0da27, type: 3}
   m_Name: Item
   m_EditorClassIdentifier: 
-  id: 
-  description: 
+  id: Onion
+  description: onion
   icon: {fileID: 0}
   prefab: {fileID: 0}
