@@ -24,8 +24,7 @@ public class Dialogue : MonoBehaviour
         
 
 
-        if (GetComponent<Manager>(_order)= pot) 
-
+       
 
 
 
