@@ -1648,8 +1648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _recipeList: {fileID: 441541675}
-  _ingredientCheck:
-  - Noodles
+  _ingredientCheck: []
   _managerOrder: {fileID: 829851104}
 --- !u!1 &854454894
 GameObject:
