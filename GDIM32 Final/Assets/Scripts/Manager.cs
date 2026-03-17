@@ -10,7 +10,7 @@ public class Manager : MonoBehaviour
         Noodles, Beef, Chicken, Spices, Water, Sugar, Salt, Herbs
     }
 
-    [SerializeField]  List<Ingredients> order = new List<Ingredients>();
+    [SerializeField] public List<Ingredients> order = new List<Ingredients>();
 
 
 

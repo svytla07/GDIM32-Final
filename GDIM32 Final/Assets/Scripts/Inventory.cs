@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -16,7 +17,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] AudioClip dropItemAudio;
 
     [Header("State")]
-    [SerializeField] Dictionary<string, Item> inventory = new();
+    [SerializeField] public Dictionary<string, Item> inventory = new();
 
     void Update()
     {
@@ -45,6 +46,7 @@ public class Inventory : MonoBehaviour
         var inventoryId = Guid.NewGuid().ToString();
         inventory.Add(inventoryId, item);
         ui.AddUIItem(inventoryId, item);
+        Debug.Log(inventoryId);
     }
 
     public void DropItem(string inventoryId)
@@ -64,5 +66,11 @@ public class Inventory : MonoBehaviour
         inventory.Remove(inventoryId);
         ui.RemoveUIItem(inventoryId);
         audioSource.PlayOneShot(dropItemAudio);
+    }
+    public List<string> DialogueInventory()
+    {
+        List<string> output = new List<string>();
+        output = inventory.Values.Select(Item => Item.description).ToList();
+        return output;
     }
 }
