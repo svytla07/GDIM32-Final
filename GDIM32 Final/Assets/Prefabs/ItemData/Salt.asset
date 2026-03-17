@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd2bec453adaac846b5d8c8117b0da27, type: 3}
-  m_Name: Sugar
+  m_Name: Salt
   m_EditorClassIdentifier: 
-  id: Sugar
-  description: Sugar
-  icon: {fileID: 21300000, guid: 13970b92696ae314d91fd37d4d530145, type: 3}
-  prefab: {fileID: 4438020702623886492, guid: fc7cd3c8de4974830ba4ecf3da077082, type: 3}
+  id: Salt
+  description: salt
+  icon: {fileID: 21300000, guid: d9e588fcfa0203a4395e73fbe7923206, type: 3}
+  prefab: {fileID: 2453160540762836091, guid: f9133bc1c43c84296b5751fb944e7bde, type: 3}
   dropScale: {x: 1, y: 1, z: 1}

@@ -27,21 +27,28 @@ public class Pot : MonoBehaviour
 
         if (_cookingUi != null) _cookingUi.SetActive(false);
         if (_cookingUi != null) _checkMark.SetActive(false);
+        
     }
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        if (_currentState != PotState.Empty) return;
+        if (_currentState != PotState.Empty)
+        {
+            Debug.Log("Pot is not empty!");
+            return; 
+
+        } 
 
         
         if (GetComponent<Collider>().CompareTag("Ingredient"))
         {
-            var droppedItem = GetComponent<Collider>().GetComponent<DroppedItem>();
+            DroppedItem droppedItem = other.GetComponent<DroppedItem>();
 
-            
-            if (droppedItem == null) return;
-
-            OnIngredientTriggered(droppedItem);
+            if (droppedItem != null && droppedItem.item != null)
+            {
+                Debug.Log($"Adding ingredient: {droppedItem.item.name}");
+                OnIngredientTriggered(droppedItem);
+             }   
         }
     }
 
@@ -49,6 +56,15 @@ public class Pot : MonoBehaviour
     {
         _addedIngredients.Add(droppedItem.item);
         Destroy(droppedItem.gameObject);
+
+         Rigidbody rb = droppedItem.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.isKinematic = true; 
+        }
+         Destroy(droppedItem.gameObject);
 
         if (_audioSource != null && _addIngredientSound != null)
         {
