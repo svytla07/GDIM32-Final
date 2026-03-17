@@ -51,8 +51,8 @@ Overall, my work helped stabilize the project and ensured the core player experi
 
 For the Final Project I worked on fixing the mouse movement issues and fine tuning the camera movement and player movement since we had been running into a couple issues where the character wouldn't be able to turn or move properly. To fix the mouse movement I created the PlayerCamera movement that I attached to the Camera object and in it I wrote code to lock the mouse in place as well as added code where if the player presses escape and V they can unlock and lock the mouse so that they could interact with the UI still. I then added variables that took the player's mouse input and then added it the camera's ddirection but used the Math Clamp function so that the Player couldn't turn too far up. I then worked on the quests system, and I tried to use Scriptable Objects at first but then I felt like it was too complicated for there only being two quests so I chose to just use an Enum and C# events. I created Quest, QuestManager and QuestUI classes that all work together to display the quest and the player's progress. I also added code in other classes to update when a task for the quest was completed. 
 
-### Team Member Name 3
-Put your individual final Devlog here.
+### Team Member Name: Mira Liu 
+For the Final Project, I was tasked with programming the state machine for cooking. I also fixed mouse movement and added a crosshair that detects which ingredients the player is looking at through Raycast. I also went back to fix the item collection system, replacing the previous PNGs with 3D assets. I created a Pot class, a Player Interaction class, and ScriptableObject for the Recipes. 
 
 ## Open-Source Assets
 [Pot Asset](https://www.cgtrader.com/items/5036369/download-page)
@@ -62,9 +62,5 @@ Put your individual final Devlog here.
 [Grass and Vegetation](https://assetstore.unity.com/packages/3d/environments/low-poly-trees-and-vegetation-pack-265300)
 
 [Cute Animals Player and NPC](https://assetstore.unity.com/packages/3d/characters/animals/little-friends-cartoon-animals-lite-262505)
-
-[Chicken png](https://www.kindpng.com/imgv/TmhwRhm_minecraft-7-chuckles-the-chicken-minecraft-hd-png/)
-
-[Cow png](https://www.kindpng.com/imgv/TRoJTJT_raw-beef-plush-minecraft-hd-png-download/)
 
 [Background Audio](https://pixabay.com/sound-effects/musical-loop-file-jazz-waltz-34-beat-bpm132-144689/)
