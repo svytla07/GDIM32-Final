@@ -26,9 +26,11 @@ public class DroppedItem : MonoBehaviour
     public void Initialize(Item item)
     {
         this.item = item;
-        var droppedItem = Instantiate(item.prefab, transform);
-        droppedItem.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-       
+        if (!autoStart && item.prefab != null)
+        {
+            var droppedItem = Instantiate(item.prefab, transform);
+            droppedItem.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+        }
         
         if (!autoStart)
         {
