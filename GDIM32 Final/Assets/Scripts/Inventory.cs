@@ -21,7 +21,7 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit))
@@ -56,28 +56,24 @@ public class Inventory : MonoBehaviour
         if (!inventory.TryGetValue(inventoryId, out Item item)) return;
         
          Camera mainCam = Camera.main;
-        Ray ray = mainCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        Vector3 spawnPosition = mainCam.transform.position + mainCam.transform.forward * 2f;
 
-        
-       Vector3 spawnPosition;
-        if (Physics.Raycast(ray, out RaycastHit hit, 5f))
-         {
-            spawnPosition = hit.point + Vector3.up * 0.5f;
-         }
-         else
-         {
-            spawnPosition = transform.position + mainCam.transform.forward * 2f;
-        }
 
-    var droppedItemObj = Instantiate(item.prefab, spawnPosition, Quaternion.identity);
-    droppedItemObj.transform.localScale = Vector3.one;
+
+        var droppedItemObj = Instantiate(item.prefab, spawnPosition, Quaternion.identity);
+        droppedItemObj.transform.localScale = Vector3.one;
         droppedItemObj.tag = "Ingredient";
 
-        var playerCollider = GetComponent<Collider>();
-        var itemCollider = droppedItemObj.GetComponent<Collider>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player!= null)
+        {
+             var playerCollider = GetComponent<Collider>();
+              var itemCollider = droppedItemObj.GetComponent<Collider>();
+            if (playerCollider != null && itemCollider != null)
+              Physics.IgnoreCollision(playerCollider, itemCollider, false);
 
-        Physics.IgnoreCollision(playerCollider, itemCollider, false);
-
+        }
+        
         var droppedItem = droppedItemObj.GetComponent<DroppedItem>();
         droppedItem.Initialize(item);
         
