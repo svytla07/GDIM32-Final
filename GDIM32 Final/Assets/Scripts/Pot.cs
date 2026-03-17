@@ -8,8 +8,10 @@ public class Pot : MonoBehaviour
 {
     [SerializeField] protected GameObject _cookingUi;
     [SerializeField] protected GameObject _checkMark;
-    [SerializeField] protected Sprite _potEmpty;
-    [SerializeField] protected Sprite _potWithSoup;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _addIngredientSound;
+    [SerializeField] private AudioClip _cookingSound;
+    [SerializeField] private AudioClip _doneSound;
 
     [SerializeField] protected Recipe _targetRecipe;
 
@@ -31,15 +33,15 @@ public class Pot : MonoBehaviour
     {
         if (_currentState != PotState.Empty) return;
 
-        // 注意 Tag 大小写必须一致
+        
         if (GetComponent<Collider>().CompareTag("Ingredient"))
         {
             var droppedItem = GetComponent<Collider>().GetComponent<DroppedItem>();
 
-            // droppedItem == null 才应该 return
+            
             if (droppedItem == null) return;
 
-            OnIngredientTriggered(droppedItem); // ← 少了分号
+            OnIngredientTriggered(droppedItem);
         }
     }
 
@@ -47,6 +49,14 @@ public class Pot : MonoBehaviour
     {
         _addedIngredients.Add(droppedItem.item);
         Destroy(droppedItem.gameObject);
+
+        if (_audioSource != null && _addIngredientSound != null)
+        {
+        _audioSource.PlayOneShot(_addIngredientSound);
+        }
+
+        Debug.Log($"Ingredients in pot: {_addedIngredients.Count}/{_targetRecipe.requiredIngredients.Count}");
+
 
         if (CheckRecipe())
             StartCooking();
@@ -79,7 +89,7 @@ public class Pot : MonoBehaviour
 
     private IEnumerator CookingTimer()
     {
-        yield return new WaitForSeconds(_targetRecipe.cooktime); // ← 少了分号
+        yield return new WaitForSeconds(_targetRecipe.cooktime); 
 
         _currentState = PotState.Done;
         _cookingUi.SetActive(false);
