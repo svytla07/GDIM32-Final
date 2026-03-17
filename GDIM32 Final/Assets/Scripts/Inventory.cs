@@ -19,31 +19,19 @@ public class Inventory : MonoBehaviour
     [Header("State")]
     [SerializeField] public Dictionary<string, Item> inventory = new();
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit))
-            {
-                if (hit.collider.CompareTag("DroppedItem"))
-                {
-                    var droppedItem = hit.collider.GetComponent<DroppedItem>();
-                    if (droppedItem == null) return;
-                    if (droppedItem.pickedUp) return;
-
-                    droppedItem.pickedUp = true;
-                    AddItem(droppedItem.item);
-                    Destroy(hit.collider.gameObject);
-                    audioSource.PlayOneShot(pickUpItemAudio);
-                }
-            }
-        }
-    }
+  
 
    public void AddItem(Item item)
     {
         var inventoryId = Guid.NewGuid().ToString();
+       
+
+         if (inventory.Values.Any(i => i.name == item.name))
+        {
+        Debug.LogWarning($"Item {item.name} already in inventory, skipping duplicate");
+        return;
+        }
+
         inventory.Add(inventoryId, item);
         ui.AddUIItem(inventoryId, item);
         Debug.Log(inventoryId);
