@@ -61,8 +61,10 @@ public class Inventory : MonoBehaviour
 
 
         var droppedItemObj = Instantiate(item.prefab, spawnPosition, Quaternion.identity);
-        droppedItemObj.transform.localScale = Vector3.one;
+        droppedItemObj.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         droppedItemObj.tag = "Ingredient";
+        
+        droppedItemObj.transform.localScale = item.dropScale;
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player!= null)

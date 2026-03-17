@@ -302,11 +302,44 @@ PrefabInstance:
       propertyPath: m_Name
       value: counter
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5216fc8180a8647a5a079632bc878cbd, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5216fc8180a8647a5a079632bc878cbd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 94519979}
   m_SourcePrefab: {fileID: 100100000, guid: 5216fc8180a8647a5a079632bc878cbd, type: 3}
+--- !u!1 &94519977 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5216fc8180a8647a5a079632bc878cbd, type: 3}
+  m_PrefabInstance: {fileID: 87839294}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &94519979
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94519977}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &163587781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -751,8 +784,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b2e7dbd7c09c1c54485e4a5e0494805c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b2e7dbd7c09c1c54485e4a5e0494805c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b2e7dbd7c09c1c54485e4a5e0494805c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b2e7dbd7c09c1c54485e4a5e0494805c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 86.354
+      value: 88.41
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b2e7dbd7c09c1c54485e4a5e0494805c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -760,7 +805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b2e7dbd7c09c1c54485e4a5e0494805c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 107.30369
+      value: 109.25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b2e7dbd7c09c1c54485e4a5e0494805c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1601,7 +1646,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: df2436b3912a64840a1cff63aef5a9df, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2068841604}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: df2436b3912a64840a1cff63aef5a9df, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1263949507}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: df2436b3912a64840a1cff63aef5a9df, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1263949506}
   m_SourcePrefab: {fileID: 100100000, guid: df2436b3912a64840a1cff63aef5a9df, type: 3}
 --- !u!4 &820486428 stripped
 Transform:
@@ -1659,11 +1710,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c478b2a84c5b848a6e182ef5dd0d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-
-  _recipeList: {fileID: 441541675}
+  _recipeList: {fileID: 0}
   _ingredientCheck: []
-  _managerOrder: {fileID: 829851104}
- 
+  _managerOrder: {fileID: 0}
 --- !u!1 &854454894
 GameObject:
   m_ObjectHideFlags: 0
@@ -2310,6 +2359,49 @@ MonoBehaviour:
   enabledPickupDelay: 3
   item: {fileID: 11400000, guid: be91c0867051f488b9552dcf02e217c1, type: 2}
   pickedUp: 0
+--- !u!1 &1263949503 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: df2436b3912a64840a1cff63aef5a9df, type: 3}
+  m_PrefabInstance: {fileID: 820486427}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1263949506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263949503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f1e6ef6f99754282b07326968544dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cookingUi: {fileID: 0}
+  _checkMark: {fileID: 0}
+  _potEmpty: {fileID: 0}
+  _potWithSoup: {fileID: 0}
+  _targetRecipe: {fileID: 0}
+--- !u!65 &1263949507
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263949503}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.54942286, y: 0.32852316, z: 0.64550793}
+  m_Center: {x: 0.05401337, y: 0.16426158, z: 0.0010605454}
 --- !u!1 &1463061586
 GameObject:
   m_ObjectHideFlags: 0
@@ -2491,7 +2583,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d7061d2ec501adb4da1e842bf1f2be57, type: 3}
       propertyPath: m_Name
-      value: LittleCat
+      value: Manager
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d7061d2ec501adb4da1e842bf1f2be57, type: 3}
       propertyPath: m_TagString
@@ -3087,7 +3179,7 @@ MonoBehaviour:
   hoverColor: {r: 0, g: 1, b: 0, a: 1}
   playerCamera: {fileID: 732389664}
   interactRange: 3
-  playerInteraction: {fileID: 0}
+  playerInteraction: {fileID: 2018358667}
 --- !u!114 &2018358665
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,4 +7,5 @@ public class Item : ScriptableObject
     public string description;
     public Sprite icon;
     public GameObject prefab;
+    public Vector3 dropScale = Vector3.one;
 }
