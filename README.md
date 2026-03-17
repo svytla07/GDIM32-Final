@@ -46,8 +46,11 @@ I contributed to the player controller by modifying both PlayerMovement.cs and P
 Beyond feature work, I resolved multiple merge conflicts involving player and camera scripts, ensuring our team’s final versions remained consistent. I additionally fixed several runtime errors, including null references caused by missing tags or unassigned variables in scripts like Dialogue.cs.
 
 Overall, my work helped stabilize the project and ensured the core player experience functioned smoothly.
-### Team Member Name 2
-Put your individual final Devlog here.
+
+### Team Member Name: Sahasra Vytla
+
+For the Final Project I worked on fixing the mouse movement issues and fine tuning the camera movement and player movement since we had been running into a couple issues where the character wouldn't be able to turn or move properly. To fix the mouse movement I created the PlayerCamera movement that I attached to the Camera object and in it I wrote code to lock the mouse in place as well as added code where if the player presses escape and V they can unlock and lock the mouse so that they could interact with the UI still. I then added variables that took the player's mouse input and then added it the camera's ddirection but used the Math Clamp function so that the Player couldn't turn too far up. I then worked on the quests system, and I tried to use Scriptable Objects at first but then I felt like it was too complicated for there only being two quests so I chose to just use an Enum and C# events. I created Quest, QuestManager and QuestUI classes that all work together to display the quest and the player's progress. I also added code in other classes to update when a task for the quest was completed. 
+
 ### Team Member Name 3
 Put your individual final Devlog here.
 
