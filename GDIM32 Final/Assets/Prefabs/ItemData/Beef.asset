@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd2bec453adaac846b5d8c8117b0da27, type: 3}
-  m_Name: Item
+  m_Name: Beef
   m_EditorClassIdentifier: 
-  id: Onion
-  description: onion
-  icon: {fileID: 0}
-  prefab: {fileID: 0}
+  id: beef
+  description: beef
+  icon: {fileID: 21300000, guid: de61e301be0d6e84f9749cacb149df0e, type: 3}
+  prefab: {fileID: 5729654230425761071, guid: 8c7c8bab6a26a4e6a9ccb29d7790200b, type: 3}

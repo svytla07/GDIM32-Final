@@ -10,6 +10,7 @@ public class Crosshair : MonoBehaviour
     [SerializeField] private Color hoverColor = Color.green; 
     [SerializeField] private Camera playerCamera;
     [SerializeField] private float interactRange = 3f; 
+    [SerializeField] private PlayerInteraction playerInteraction;
 
     void Start()
     {
@@ -18,18 +19,14 @@ public class Crosshair : MonoBehaviour
     }
     void Update()
     {
-        if (playerCamera == null) return; 
-
-        Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-
-        if(Physics.Raycast(ray, out RaycastHit hit, interactRange))
+        
+     if (playerInteraction != null && playerInteraction.IsLookingAtItem())
         {
-            if(hit.collider.CompareTag("DroppedItem") || hit.collider.CompareTag("Ingredient"))
-            {
-                crosshairText.color = hoverColor;
-            }
+            crosshairText.color = hoverColor;
         }
-
-        crosshairText.color = normalColor; 
+        else
+        {
+            crosshairText.color = normalColor;
+        }
     }
 }

@@ -41,7 +41,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    void AddItem(Item item)
+   public void AddItem(Item item)
     {
         var inventoryId = Guid.NewGuid().ToString();
         inventory.Add(inventoryId, item);
@@ -51,18 +51,36 @@ public class Inventory : MonoBehaviour
 
     public void DropItem(string inventoryId)
     {
-        if (!inventory.TryGetValue(inventoryId, out Item item)) return;
+        Debug.Log($"DropItem called with ID: {inventoryId}");
 
-        Vector3 spawnPosition = transform.position + transform.forward * 1f + Vector3.up * 0.5f;
-        var droppedItemObj = Instantiate(item.prefab, spawnPosition, Quaternion.identity);
+        if (!inventory.TryGetValue(inventoryId, out Item item)) return;
+        
+         Camera mainCam = Camera.main;
+        Ray ray = mainCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+
+        
+       Vector3 spawnPosition;
+        if (Physics.Raycast(ray, out RaycastHit hit, 5f))
+         {
+            spawnPosition = hit.point + Vector3.up * 0.5f;
+         }
+         else
+         {
+            spawnPosition = transform.position + mainCam.transform.forward * 2f;
+        }
+
+    var droppedItemObj = Instantiate(item.prefab, spawnPosition, Quaternion.identity);
+    droppedItemObj.transform.localScale = Vector3.one;
+        droppedItemObj.tag = "Ingredient";
 
         var playerCollider = GetComponent<Collider>();
         var itemCollider = droppedItemObj.GetComponent<Collider>();
-        Physics.IgnoreCollision(playerCollider, itemCollider);
+
+        Physics.IgnoreCollision(playerCollider, itemCollider, false);
 
         var droppedItem = droppedItemObj.GetComponent<DroppedItem>();
         droppedItem.Initialize(item);
-
+        
         inventory.Remove(inventoryId);
         ui.RemoveUIItem(inventoryId);
         audioSource.PlayOneShot(dropItemAudio);
