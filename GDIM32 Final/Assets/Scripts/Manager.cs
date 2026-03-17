@@ -18,7 +18,7 @@ public class Manager : MonoBehaviour
         if (gather.state == QuestState.Completed && cookChicken.state == QuestState.NotStarted) {
             cookChicken.state = QuestState.InProgress;
         }
-        if (gather.state == QuestState.Completed && cookChicken.state == QuestState.Complete && cookBeef.state == QuestState.NotStarted) {
+        if (gather.state == QuestState.Completed && cookChicken.state == QuestState.Completed && cookBeef.state == QuestState.NotStarted) {
             cookBeef.state = QuestState.InProgress;
         }
     

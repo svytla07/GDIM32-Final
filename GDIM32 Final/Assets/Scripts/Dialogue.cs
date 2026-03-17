@@ -7,9 +7,9 @@ public class Dialogue : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    [SerializeField] Inventory _recipeList;
+   /* [SerializeField] Inventory _recipeList;
     [SerializeField] List<string> _ingredientCheck = new List<string>();
-    [SerializeField] Manager _managerOrder;
+    
     void Start()
     {
         
@@ -52,5 +52,5 @@ public class Dialogue : MonoBehaviour
 
 
 
-    }
+    } */
 }
