@@ -1659,9 +1659,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c478b2a84c5b848a6e182ef5dd0d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _recipeList: {fileID: 0}
+
+  _recipeList: {fileID: 441541675}
   _ingredientCheck: []
-  _managerOrder: {fileID: 0}
+  _managerOrder: {fileID: 829851104}
+ 
 --- !u!1 &854454894
 GameObject:
   m_ObjectHideFlags: 0
