@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Android.Types;
 using UnityEngine;
 
 public class Manager : MonoBehaviour
@@ -7,10 +8,10 @@ public class Manager : MonoBehaviour
     // Start is called before the first frame update
     public enum Ingredients
     {
-        Noodles, Beef, Chicken, Spices, Water, Sugar, Salt, Herbs
+        Noodles, Beef, Chicken, Onion, Water, Sugar, Salt
     }
 
-    [SerializeField]  List<Ingredients> order = new List<Ingredients>();
+    [SerializeField] public List<Ingredients> order = new List<Ingredients>();
 
 
 
@@ -18,23 +19,24 @@ public class Manager : MonoBehaviour
     {
         switch (randomizedIngredients)
         {
-            default: return Ingredients.Noodles;
-            case 1: return Ingredients.Beef;
-            case 2: return Ingredients.Chicken;
-            case 3: return Ingredients.Spices;
+            default: return Ingredients.Beef;
+            case 1: return Ingredients.Noodles;
+            case 2: return Ingredients.Salt;
+            case 3: return Ingredients.Onion;
             case 4: return Ingredients.Water;
             case 5: return Ingredients.Sugar;
-            case 6: return Ingredients.Herbs;
+            case 6: return Ingredients.Chicken;
         }
     }
 
 
     void Start()
     {
-        
-        for (int i = 0; i < 4; i++)
+        int randomizedIngredients = Random.Range(-1,1);
+        for (int i = 0; i < 6; i++)
         {
-           int randomizedIngredients = Random.Range(0, 6);
+            
+           randomizedIngredients = randomizedIngredients + 1; 
            order.Add(_order(randomizedIngredients));
 
         }
