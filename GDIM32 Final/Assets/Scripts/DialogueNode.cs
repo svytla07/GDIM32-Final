@@ -3,21 +3,18 @@ using System.Collections.Generic;
 using System.IO.Enumeration;
 using UnityEngine;
 
-[CreateAssetMenu (fileName = "DialogueNode", menuName = "ScriptableObjects/NialogueNode")]
+[CreateAssetMenu (fileName = "DialogueNode", menuName = "ScriptableObjects/DialogueNode")]
 public class DialogueNode : ScriptableObject
 {
-    public List<string>_dialogueIntro;
-    public List<string>_dialogueCorrect;
-    public List<string>_dialogueIncorrect;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string npcName;
+    public string[] dialogueLines;
+    
+    public DialogueChoice[] choices;
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+[System.Serializible]
+public class DialogueChoice {
+    public int dialogueIndex;
+    public string[] choices;
+    public int[] nextDialogueIndexes;
 }
