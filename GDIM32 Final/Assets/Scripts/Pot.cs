@@ -96,9 +96,11 @@ void OnIngredientTriggered(DroppedItem droppedItem)
     
     Debug.Log($"Checking recipe... Need {_targetRecipe?.requiredIngredients.Count}, Have {_addedIngredients.Count}");
 
-    Destroy(droppedItem.gameObject);
+    droppedItem.gameObject.SetActive(false);
 
          Debug.Log("Destroy() called!");
+
+        
     
     if (CheckRecipe())
     {
@@ -169,4 +171,6 @@ void OnIngredientTriggered(DroppedItem droppedItem)
         if(_checkMark != null) _checkMark.SetActive(false);
         if (_cylinder != null) _cylinder.material.color = _defaultColor;
     }
+
+
 }
