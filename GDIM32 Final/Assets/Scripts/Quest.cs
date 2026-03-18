@@ -15,6 +15,7 @@ public class Quest
     public int requiredAmount;
     public int currentAmount;
     public QuestState state;
+    public Recipe recipe;
 
     public Quest(string name, int required)
     {
@@ -22,6 +23,7 @@ public class Quest
         requiredAmount = required;
         currentAmount = 0;
         state = QuestState.NotStarted;
+        this.recipe = recipe; 
     }
 
     public void AddProgress(int amount)

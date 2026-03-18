@@ -29,6 +29,8 @@ public class Pot : MonoBehaviour
         if (_cookingUi != null) _cookingUi.SetActive(false);
         if (_cookingUi != null) _checkMark.SetActive(false);
         
+        if (QuestManager.Instance != null)
+        _targetRecipe = QuestManager.Instance.GetCurrentRecipe();
     }
 
    void OnTriggerEnter(Collider other)
@@ -130,7 +132,9 @@ void OnIngredientTriggered(DroppedItem droppedItem)
 
     private IEnumerator CookingTimer()
     {
+        Debug.Log("CookingTimer coroutine started!");
         yield return new WaitForSeconds(_targetRecipe.cooktime); 
+        Debug.Log("Timer finished! Setting state to Done...");
 
         _currentState = PotState.Done;
         _cookingUi.SetActive(false);
@@ -138,5 +142,7 @@ void OnIngredientTriggered(DroppedItem droppedItem)
 
         if (_cylinder != null)
             _cylinder.material.color = _targetRecipe._resultcolor;
+        
+        QuestManager.Instance?.AdvanceQuest();
     }
 }
