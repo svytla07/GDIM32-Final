@@ -37,7 +37,9 @@ public class PlayerInteraction : MonoBehaviour
             if (hit.collider.CompareTag("Ingredient") || hit.collider.CompareTag("DroppedItem"))
             {
                 Debug.Log("tag matches");
-                DroppedItem droppedItem = hit.collider.GetComponent<DroppedItem>();
+                DroppedItem droppedItem = hit.collider.GetComponent<DroppedItem>()
+                        ?? hit.collider.GetComponentInParent<DroppedItem>();
+
 
                 if (droppedItem != null && !droppedItem.pickedUp)
                 {
@@ -46,12 +48,6 @@ public class PlayerInteraction : MonoBehaviour
                 }
             }
         }
-        else 
-        {
-            Debug.Log("Raycast hit NOTHING");
-            Debug.Log($"Tag doesn't match! Expected 'Ingredient' or 'DroppedItem', got '{hit.collider.tag}'");
-        }
-
         currentLookingAt = null;
     }
 

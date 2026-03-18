@@ -34,13 +34,17 @@ public class Pot : MonoBehaviour
             _defaultColor = _cylinder.material.color;
 
         if (QuestManager.Instance != null)
-        _targetRecipe = QuestManager.Instance.GetCurrentRecipe();
+        {
+            Recipe questRecipe = QuestManager.Instance.GetCurrentRecipe();
+            if (questRecipe != null)
+                _targetRecipe = questRecipe; 
+        }
     }
 
    void OnTriggerEnter(Collider other)
 {
 
-    if (_currentState != PotState.Empty)
+    if (_currentState == PotState.Cooking || _currentState == PotState.Done)
     {
         Debug.LogWarning("Pot is not empty, rejecting item!");
         return;
@@ -50,12 +54,10 @@ public class Pot : MonoBehaviour
     {
         Debug.Log("Tag matches Ingredient");
         
-        DroppedItem droppedItem = other.GetComponent<DroppedItem>();
-        
+        DroppedItem droppedItem = other.GetComponent<DroppedItem>()
+                                ??other.GetComponent<DroppedItem>();
         if (droppedItem == null || droppedItem.item == null) return;
-
-        
-       if (!droppedItem.Claim()) return;
+        if (!droppedItem.Claim()) return;
 
     Debug.Log($"Item is {droppedItem.item.name}");
      Debug.Log("CALLING OnIngredientTriggered");
@@ -109,6 +111,7 @@ void OnIngredientTriggered(DroppedItem droppedItem)
     }
 }
 
+
     protected bool CheckRecipe()
     {
         if (_targetRecipe == null) return false;
@@ -129,9 +132,12 @@ void OnIngredientTriggered(DroppedItem droppedItem)
 
  protected void StartCooking()
     {
+        Debug.Log("StartCooking called!");
         _currentState = PotState.Cooking;
         _cookingUi.SetActive(true);
         
+        if (_cookingUi == null) { Debug.LogError("_cookingUi is NULL!"); return; }
+        _cookingUi.SetActive(true);
 
         if (_cylinder != null)
             _cylinder.material.color = _targetRecipe._resultcolor;

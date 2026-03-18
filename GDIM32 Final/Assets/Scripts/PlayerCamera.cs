@@ -22,6 +22,11 @@ public class PlayerCamera : MonoBehaviour
    
     void Update()
     {
+        float sensitivityMultiplier = 1f;
+
+         #if UNITY_WEBGL && !UNITY_EDITOR
+        sensitivityMultiplier = 0.1f;
+    #endif
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
 
