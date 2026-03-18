@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e7cdfbfabaaf4a1c8dcc9eba22cc312, type: 3}
   m_Name: Beef Pho
   m_EditorClassIdentifier: 
-  requiredIngredients: []
+  requiredIngredients:
+  - {fileID: 11400000, guid: be91c0867051f488b9552dcf02e217c1, type: 2}
+  - {fileID: 11400000, guid: c54e0439d908548dd84ba4b7ebca943b, type: 2}
+  - {fileID: 11400000, guid: 058a83f86d5064cf39444754abf9276d, type: 2}
+  - {fileID: 11400000, guid: db21342ed8bad4767872cc5f679dc459, type: 2}
+  - {fileID: 11400000, guid: 80e5626e0137e415a8755ea9a26a3440, type: 2}
   result: {fileID: 0}
   cooktime: 3

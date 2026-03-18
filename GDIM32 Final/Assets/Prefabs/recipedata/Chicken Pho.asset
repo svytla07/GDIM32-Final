@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Chicken Pho
   m_EditorClassIdentifier: 
   requiredIngredients:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 4ab7036c53fdd4dc89b3710740095542, type: 2}
+  - {fileID: 11400000, guid: c54e0439d908548dd84ba4b7ebca943b, type: 2}
+  - {fileID: 11400000, guid: 058a83f86d5064cf39444754abf9276d, type: 2}
+  - {fileID: 11400000, guid: db21342ed8bad4767872cc5f679dc459, type: 2}
+  - {fileID: 11400000, guid: 80e5626e0137e415a8755ea9a26a3440, type: 2}
   result: {fileID: 0}
   cooktime: 5
