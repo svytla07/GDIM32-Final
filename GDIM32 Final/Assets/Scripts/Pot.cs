@@ -12,6 +12,7 @@ public class Pot : MonoBehaviour
     [SerializeField] private AudioClip _addIngredientSound;
     [SerializeField] private AudioClip _cookingSound;
     [SerializeField] private AudioClip _doneSound;
+    [SerializeField] private MeshRenderer _cylinder;
 
     [SerializeField] protected Recipe _targetRecipe;
 
@@ -134,5 +135,8 @@ void OnIngredientTriggered(DroppedItem droppedItem)
         _currentState = PotState.Done;
         _cookingUi.SetActive(false);
         _checkMark.SetActive(true);
+
+        if (_cylinder != null)
+            _cylinder.material.color = _targetRecipe._resultcolor;
     }
 }
