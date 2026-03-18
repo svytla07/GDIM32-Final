@@ -20,6 +20,7 @@ public class Pot : MonoBehaviour
     protected List<Item> _addedIngredients = new();
     protected MeshRenderer meshRenderer;
     protected Rigidbody _rigidbody;
+    private Color _defaultColor;
 
     protected virtual void Start()
     {
@@ -27,15 +28,17 @@ public class Pot : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
 
         if (_cookingUi != null) _cookingUi.SetActive(false);
-        if (_cookingUi != null) _checkMark.SetActive(false);
+        if (_checkMark != null) _checkMark.SetActive(false);
         
+        if (_cylinder != null) 
+            _defaultColor = _cylinder.material.color;
+
         if (QuestManager.Instance != null)
         _targetRecipe = QuestManager.Instance.GetCurrentRecipe();
     }
 
    void OnTriggerEnter(Collider other)
 {
-    Debug.Log($"=== POT TRIGGER === Object: {other.name}, Tag: {other.tag}, State: {_currentState}");
 
     if (_currentState != PotState.Empty)
     {
@@ -49,35 +52,21 @@ public class Pot : MonoBehaviour
         
         DroppedItem droppedItem = other.GetComponent<DroppedItem>();
         
-        if (droppedItem == null)
-        {
-            Debug.LogError($" NO DroppedItem component!");
-            return;
-        }
-        
-        Debug.Log("DroppedItem component found");
-        
-        if (droppedItem.item == null)
-        {
-            Debug.LogError($" DroppedItem.item is NULL!");
-            return;
-        }
+        if (droppedItem == null || droppedItem.item == null) return;
 
-        Debug.Log($"Item is {droppedItem.item.name}");
-        Debug.Log("CALLING OnIngredientTriggered");
         
-        OnIngredientTriggered(droppedItem);
+       if (!droppedItem.Claim()) return;
+
+    Debug.Log($"Item is {droppedItem.item.name}");
+     Debug.Log("CALLING OnIngredientTriggered");
         
-        
-    }
-    else
-    {
-        Debug.LogWarning($"✗ Wrong tag: {other.tag}");
+    OnIngredientTriggered(droppedItem);
     }
 }
-
 void OnIngredientTriggered(DroppedItem droppedItem)
 {
+    droppedItem.isInPot = true;
+
     Rigidbody rb = droppedItem.GetComponent<Rigidbody>();
     if (rb != null)
     {
@@ -86,13 +75,28 @@ void OnIngredientTriggered(DroppedItem droppedItem)
     }
 
     _addedIngredients.Add(droppedItem.item);
-    Debug.Log($"Added {droppedItem.item.name} to pot. Total: {_addedIngredients.Count}");
-    
-    Destroy(droppedItem.gameObject);
-    Debug.Log("Destroy() called!");
 
+         Debug.Log($"Added {droppedItem.item.name} to pot. Total: {_addedIngredients.Count}");
+    
+    
+    Inventory inventory = FindObjectOfType<Inventory>();
+    if (inventory != null)
+    {
+        AudioSource inventoryAudio = inventory.GetComponent<AudioSource>();
+        if (inventoryAudio != null)
+            inventoryAudio.Stop();
+    }
+
+    if (_audioSource != null && _addIngredientSound != null)
+        _audioSource.PlayOneShot(_addIngredientSound);
+    else 
+        Debug.LogError("the add ingredient sound is nul...");
     
     Debug.Log($"Checking recipe... Need {_targetRecipe?.requiredIngredients.Count}, Have {_addedIngredients.Count}");
+
+    Destroy(droppedItem.gameObject);
+
+         Debug.Log("Destroy() called!");
     
     if (CheckRecipe())
     {
@@ -123,7 +127,7 @@ void OnIngredientTriggered(DroppedItem droppedItem)
         return true;
     }
 
-    protected void StartCooking()
+ protected void StartCooking()
     {
         _currentState = PotState.Cooking;
         _cookingUi.SetActive(true);
@@ -157,5 +161,6 @@ void OnIngredientTriggered(DroppedItem droppedItem)
         _currentState = PotState.Empty;
         _addedIngredients.Clear();
         if(_checkMark != null) _checkMark.SetActive(false);
+        if (_cylinder != null) _cylinder.material.color = _defaultColor;
     }
 }

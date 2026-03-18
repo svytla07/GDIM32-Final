@@ -9,11 +9,13 @@ public class DroppedItem : MonoBehaviour
     bool autoStart;
 
     [SerializeField]
-    float enabledPickupDelay = 3.0f;
+    float enabledPickupDelay = 0f;
 
     [Header("State")]
     public Item item;
     public bool pickedUp = false;
+    public bool isInPot = false; 
+    private bool _isBeingDestroyed = false; 
 
     void Start()
     {
@@ -33,28 +35,7 @@ public class DroppedItem : MonoBehaviour
     public void Initialize(Item item)
     {
         this.item = item;
-        if (!autoStart && item.prefab != null)
-        {
-            var droppedItem = Instantiate(item.prefab, transform);
-            droppedItem.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-
-            DroppedItem childDroppedItem = droppedItem.GetComponent<DroppedItem>();
-            if (childDroppedItem != null)
-            {
-                childDroppedItem.item = item;
-            }
-             
-            Rigidbody rb = droppedItem.GetComponent<Rigidbody>();
-             
-            if (rb != null)
-            {
-                rb.useGravity = true;
-                rb.isKinematic = false;
-            }
-        }
-
-
-        
+         
         if (!autoStart)
         {
             GetComponent<Collider>().enabled = false; 
@@ -68,5 +49,26 @@ public class DroppedItem : MonoBehaviour
         yield return new WaitForSeconds (delay);
         GetComponent<Collider>().enabled = true;
        
+    }
+
+    public void EnableForPotDetection()
+    {
+        GetComponent<Collider>().enabled = true;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Pot"))
+        {
+            Pot pot = other.GetComponent<Pot>();
+            if (pot != null)
+                GetComponent<Collider>().enabled = true;
+        }
+    }
+    public bool Claim()
+    {
+        if (_isBeingDestroyed) return false; 
+        _isBeingDestroyed = true;
+        return true;
     }
 }

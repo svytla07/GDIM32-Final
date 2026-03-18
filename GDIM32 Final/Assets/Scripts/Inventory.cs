@@ -70,20 +70,25 @@ public class Inventory : MonoBehaviour
         
         inventory.Remove(inventoryId);
         ui.RemoveUIItem(inventoryId);
-        audioSource.PlayOneShot(dropItemAudio);
 
         StartCoroutine(PlayDropSoundIfNotInPot(droppedItemObj));
     }
 
     IEnumerator PlayDropSoundIfNotInPot(GameObject droppedItem)
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
 
         if (droppedItem != null)
         {
+            DroppedItem droppedItemComponent = droppedItem.GetComponent<DroppedItem>();
+            if (droppedItem != null && droppedItemComponent.isInPot)
+            {
+                yield break;
+            }
             if (audioSource != null && dropItemAudio != null)
                 audioSource.PlayOneShot(dropItemAudio);
         }
+
 
 
     }
