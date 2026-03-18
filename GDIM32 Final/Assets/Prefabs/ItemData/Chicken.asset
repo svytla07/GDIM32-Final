@@ -15,5 +15,5 @@ MonoBehaviour:
   id: chicken
   description: it's chicken yay
   icon: {fileID: 21300000, guid: b91c43869ca67a14e8332dff29700d6e, type: 3}
-  prefab: {fileID: 4928076246523733491, guid: 8135fa7f9214741a48646b3b811e42d9, type: 3}
+  prefab: {fileID: 210734107040806376, guid: 287c7f27764c44981bf3c9949c09bc44, type: 3}
   dropScale: {x: 1, y: 1, z: 1}
