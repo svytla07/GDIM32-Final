@@ -24,6 +24,7 @@ public class Quest
         currentAmount = 0;
         state = QuestState.NotStarted;
         this.recipe = recipe; 
+        
     }
 
     public void AddProgress(int amount)

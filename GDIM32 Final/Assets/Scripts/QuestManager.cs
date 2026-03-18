@@ -16,6 +16,7 @@ public class QuestManager : MonoBehaviour
     public Quest cookBeefPho;
 
     public Quest _currentQuest;
+    public Recipe GetCurrentRecipe() => _currentQuest?.recipe;
 
     void Awake()
     {
