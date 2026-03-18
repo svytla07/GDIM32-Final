@@ -5,31 +5,41 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
-  
-    public void Talk() {
+  [SerializeField] private DialogueNode _greetingDialogue;
+  [SerializeField] private DialogueNode _gatheringDialogue;
+  [SerializeField] private DialogueNode _chickenPhoDialogue;
+  [SerializeField] private DialogueNode _beefPhoDialogue;
+  [SerializeField] private DialogueNode _completedDialogue;
+
+  private DialogueNode _currentNode; 
+  private int _currentLineIndex = 0;
+
+    public void Talk() 
+    {
         
         Quest gather = QuestManager.Instance.gatherIngredients;
         Quest cookChicken = QuestManager.Instance.cookChickenPho;
         Quest cookBeef = QuestManager.Instance.cookBeefPho;
 
-        if (gather.state == QuestState.NotStarted) {
-            gather.state = QuestState.InProgress;
+        if (gather.state == QuestState.NotStarted) 
+        {
+            QuestManager.Instance.SetQuest(gather);
         }
-        if (gather.state == QuestState.Completed && cookChicken.state == QuestState.NotStarted) {
-            cookChicken.state = QuestState.InProgress;
+        else if (gather.state == QuestState.Completed && cookChicken.state == QuestState.NotStarted) 
+        {
+            QuestManager.Instance.SetQuest(cookChicken);
         }
-        if (gather.state == QuestState.Completed && cookChicken.state == QuestState.Completed && cookBeef.state == QuestState.NotStarted) {
-            cookBeef.state = QuestState.InProgress;
+        else if (gather.state == QuestState.Completed && cookChicken.state == QuestState.Completed && cookBeef.state == QuestState.NotStarted) 
+        {
+           QuestManager.Instance.SetQuest(cookBeef);
         }
     
     }
- 
-    
-   
-            
-    
-        
-    
+
+    private void StartDialogue(DialogueNode node)
+    {
+        _currentNode = node; 
+    }
 }
     
 

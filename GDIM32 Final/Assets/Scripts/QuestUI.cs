@@ -7,6 +7,7 @@ public class QuestUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI questText;
     
+   
     void Update()
     {
         var gather = QuestManager.Instance.gatherIngredients;
@@ -29,7 +30,11 @@ public class QuestUI : MonoBehaviour
         {
             questText.text = "All quests completed!";
         }
-        else
+        else if (gather.state == QuestState.NotStarted)
+        {
+            questText.text = "Talk to the manager to get started! ";
+        }
+        else 
         {
             questText.text = "";
         }

@@ -26,8 +26,6 @@ public class QuestManager : MonoBehaviour
         gatherIngredients = new Quest("Gather Ingredients", 5);
         cookChickenPho = new Quest("Cook Chicken Pho", 1, _chickenPhoRecipe);
         cookBeefPho = new Quest("Cook Beef Pho", 1, _beefPhoRecipe);
-
-        SetQuest(gatherIngredients);
     }
 
     public Recipe GetCurrentRecipe() => _currentRecipe;
@@ -45,6 +43,8 @@ public class QuestManager : MonoBehaviour
 
         if (quest.recipe != null)
             FindObjectOfType<Pot>()?.UpdateRecipe(quest.recipe);
+
+
     }
 
     public void AdvanceQuest()
