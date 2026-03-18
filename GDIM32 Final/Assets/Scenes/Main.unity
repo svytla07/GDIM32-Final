@@ -653,15 +653,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 39ee3c7afd24a6642a97d570efc5b442, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 85.32
+      value: 85.73
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 39ee3c7afd24a6642a97d570efc5b442, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.64
+      value: 1.04
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 39ee3c7afd24a6642a97d570efc5b442, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 122.2
+      value: 122.26
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 39ee3c7afd24a6642a97d570efc5b442, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3086,8 +3086,8 @@ MonoBehaviour:
   _addIngredientSound: {fileID: 8300000, guid: 26793fadccf8f49de8fbd6fb3526a0cc, type: 3}
   _cookingSound: {fileID: 8300000, guid: 88785ac412ab244669b76df363626e6c, type: 3}
   _doneSound: {fileID: 8300000, guid: df08b4568c89348c581180048ab94ce0, type: 3}
-  _cylinder: {fileID: 0}
-  _targetRecipe: {fileID: 0}
+  _cylinder: {fileID: 2068841606}
+  _targetRecipe: {fileID: 11400000, guid: c89cfa179f27f4df2add60141cb156da, type: 2}
 --- !u!65 &1263949507
 BoxCollider:
   m_ObjectHideFlags: 0

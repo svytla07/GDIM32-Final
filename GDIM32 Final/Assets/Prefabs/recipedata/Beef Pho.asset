@@ -20,3 +20,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 80e5626e0137e415a8755ea9a26a3440, type: 2}
   result: {fileID: 0}
   cooktime: 3
+  _resultcolor: {r: 0.7924528, g: 0.6099959, b: 0.35510856, a: 1}

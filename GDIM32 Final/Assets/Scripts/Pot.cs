@@ -127,7 +127,13 @@ void OnIngredientTriggered(DroppedItem droppedItem)
     {
         _currentState = PotState.Cooking;
         _cookingUi.SetActive(true);
-        StartCoroutine(CookingTimer());
+        
+
+        if (_cylinder != null)
+            _cylinder.material.color = _targetRecipe._resultcolor;
+
+            StartCoroutine(CookingTimer());
+
     }
 
     private IEnumerator CookingTimer()
@@ -140,9 +146,16 @@ void OnIngredientTriggered(DroppedItem droppedItem)
         _cookingUi.SetActive(false);
         _checkMark.SetActive(true);
 
-        if (_cylinder != null)
-            _cylinder.material.color = _targetRecipe._resultcolor;
+        
         
         QuestManager.Instance?.AdvanceQuest();
+    }
+    
+    public void UpdateRecipe(Recipe newRecipe)
+    {
+        _targetRecipe = newRecipe;
+        _currentState = PotState.Empty;
+        _addedIngredients.Clear();
+        if(_checkMark != null) _checkMark.SetActive(false);
     }
 }

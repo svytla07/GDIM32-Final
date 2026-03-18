@@ -17,7 +17,7 @@ public class Quest
     public QuestState state;
     public Recipe recipe;
 
-    public Quest(string name, int required)
+    public Quest(string name, int required, Recipe recipe = null)
     {
         questName = name;
         requiredAmount = required;
