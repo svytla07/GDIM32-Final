@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Noodles : MonoBehaviour
 {
+    private bool _interacted = false; 
+    
     public void Interact()
     {
         BowlHolder holder = BowlHolder.Instance;
@@ -14,13 +16,15 @@ public class Noodles : MonoBehaviour
             return;
         }
 
-        if(!holder.HasNoodles)
+        if(holder.HasNoodles)
         {
             Debug.Log("bowl already has noodles");
             return;
         }
 
         holder.AddNoodles();
+
+        Debug.Log($"HasNoodles value: {holder.HasNoodles}");
     }
 
 }
