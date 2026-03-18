@@ -8,6 +8,7 @@ TagManager:
   - Ingredient
   - DroppedItem
   - StartManagerDialogue
+  - Pot
   layers:
   - Default
   - TransparentFX

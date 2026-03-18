@@ -16,6 +16,7 @@ public class DroppedItem : MonoBehaviour
     public bool pickedUp = false;
     public bool isInPot = false; 
     private bool _isBeingDestroyed = false; 
+    private bool _initialized = false; 
 
     void Start()
     {
@@ -31,16 +32,13 @@ public class DroppedItem : MonoBehaviour
             Initialize(item);
         }
     }
-
+  
     public void Initialize(Item item)
     {
+        if (_initialized) return;
+        _initialized = true;
+
         this.item = item;
-         
-        if (!autoStart)
-        {
-            GetComponent<Collider>().enabled = false; 
-            
-        }
         StartCoroutine(EnablePickup(enabledPickupDelay));
     }
 
