@@ -19,10 +19,34 @@ public class PlayerInteraction : MonoBehaviour
         CheckForItem();
 
         
-        if (Input.GetMouseButtonDown(0)|| Input.GetKeyDown(KeyCode.E) && currentLookingAt != null)
+        if (Input.GetMouseButtonDown(0))
         {
+
+            if (currentLookingAt != null)
+            {   
+            Bowl bowl = currentLookingAt.GetComponent<Bowl>();
+            if (bowl != null)
+            {
+                BowlHolder.Instance.PickupBowl(currentLookingAt.gameObject);
+                currentLookingAt = null; 
+                return; 
+            }
+
             PickupItem(currentLookingAt);
+            return;
+            }
+        
+        Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        if (Physics.Raycast(ray, out RaycastHit hit, interactRange))
+        {
+            Noodles noodles = hit.collider.GetComponent<Noodles>();
+            if (noodles != null) { noodles.Interact(); return; }
+
+            Soup soup = hit.collider.GetComponent<Soup>();
+            if (soup != null) { soup.Interact(); return; }
         }
+        }
+
     }
 
     void CheckForItem()

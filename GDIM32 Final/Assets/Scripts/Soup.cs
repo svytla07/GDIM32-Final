@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class Soup : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Pot _pot;
 
-    // Update is called once per frame
-    void Update()
+    public void Interact()
     {
+        BowlHolder holder = BowlHolder.Instance;
         
+        if (_pot.CurrentState != PotState.Done)
+        {
+            Debug.Log("soup not done");
+            return;
+        }
+        if (!holder.IsHoldingBowl)
+        {
+            Debug.Log("no bowl held");
+        }
+
+        if (!holder.HasNoodles)
+        {
+            Debug.Log("add noodles first");
+            return;
+        }
+
+        holder.AddSoup();
     }
 }

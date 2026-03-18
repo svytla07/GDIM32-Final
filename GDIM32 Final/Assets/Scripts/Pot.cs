@@ -22,6 +22,8 @@ public class Pot : MonoBehaviour
     protected Rigidbody _rigidbody;
     private Color _defaultColor;
 
+    public PotState CurrentState => _currentState;
+
     protected virtual void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
