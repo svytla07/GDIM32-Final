@@ -17,6 +17,13 @@ public class DroppedItem : MonoBehaviour
 
     void Start()
     {
+         Rigidbody rb = GetComponent<Rigidbody>();
+
+         if (rb != null)
+         {
+            rb.useGravity = true;
+            rb.isKinematic = false;
+        }
         if (autoStart && item != null)
         {
             Initialize(item);
@@ -30,7 +37,23 @@ public class DroppedItem : MonoBehaviour
         {
             var droppedItem = Instantiate(item.prefab, transform);
             droppedItem.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+
+            DroppedItem childDroppedItem = droppedItem.GetComponent<DroppedItem>();
+            if (childDroppedItem != null)
+            {
+                childDroppedItem.item = item;
+            }
+             
+            Rigidbody rb = droppedItem.GetComponent<Rigidbody>();
+             
+            if (rb != null)
+            {
+                rb.useGravity = true;
+                rb.isKinematic = false;
+            }
         }
+
+
         
         if (!autoStart)
         {

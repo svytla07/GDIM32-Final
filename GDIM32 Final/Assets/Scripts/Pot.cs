@@ -30,53 +30,77 @@ public class Pot : MonoBehaviour
         
     }
 
-    protected virtual void OnTriggerEnter(Collider other)
+   void OnTriggerEnter(Collider other)
+{
+    Debug.Log($"=== POT TRIGGER === Object: {other.name}, Tag: {other.tag}, State: {_currentState}");
+
+    if (_currentState != PotState.Empty)
     {
-        if (_currentState != PotState.Empty)
-        {
-            Debug.Log("Pot is not empty!");
-            return; 
+        Debug.LogWarning("Pot is not empty, rejecting item!");
+        return;
+    }
 
-        } 
-
+    if (other.CompareTag("Ingredient"))
+    {
+        Debug.Log("Tag matches Ingredient");
         
-        if (GetComponent<Collider>().CompareTag("Ingredient"))
+        DroppedItem droppedItem = other.GetComponent<DroppedItem>();
+        
+        if (droppedItem == null)
         {
-            DroppedItem droppedItem = other.GetComponent<DroppedItem>();
-
-            if (droppedItem != null && droppedItem.item != null)
-            {
-                Debug.Log($"Adding ingredient: {droppedItem.item.name}");
-                OnIngredientTriggered(droppedItem);
-             }   
+            Debug.LogError($" NO DroppedItem component!");
+            return;
         }
-    }
+        
+        Debug.Log("DroppedItem component found");
+        
+        if (droppedItem.item == null)
+        {
+            Debug.LogError($" DroppedItem.item is NULL!");
+            return;
+        }
 
-    protected virtual void OnIngredientTriggered(DroppedItem droppedItem)
+        Debug.Log($"Item is {droppedItem.item.name}");
+        Debug.Log("CALLING OnIngredientTriggered");
+        
+        OnIngredientTriggered(droppedItem);
+        
+        
+    }
+    else
     {
-        _addedIngredients.Add(droppedItem.item);
-        Destroy(droppedItem.gameObject);
-
-         Rigidbody rb = droppedItem.GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-            rb.isKinematic = true; 
-        }
-         Destroy(droppedItem.gameObject);
-
-        if (_audioSource != null && _addIngredientSound != null)
-        {
-        _audioSource.PlayOneShot(_addIngredientSound);
-        }
-
-        Debug.Log($"Ingredients in pot: {_addedIngredients.Count}/{_targetRecipe.requiredIngredients.Count}");
-
-
-        if (CheckRecipe())
-            StartCooking();
+        Debug.LogWarning($"✗ Wrong tag: {other.tag}");
     }
+}
+
+void OnIngredientTriggered(DroppedItem droppedItem)
+{
+    Rigidbody rb = droppedItem.GetComponent<Rigidbody>();
+    if (rb != null)
+    {
+        rb.isKinematic = true;
+        Debug.Log("set rigidbody to kinematic");
+    }
+
+    _addedIngredients.Add(droppedItem.item);
+    Debug.Log($"Added {droppedItem.item.name} to pot. Total: {_addedIngredients.Count}");
+    
+    Destroy(droppedItem.gameObject);
+    Debug.Log("Destroy() called!");
+
+    
+    Debug.Log($"Checking recipe... Need {_targetRecipe?.requiredIngredients.Count}, Have {_addedIngredients.Count}");
+    
+    if (CheckRecipe())
+    {
+        Debug.Log(">>> RECIPE COMPLETE! STARTING COOKING <<<");
+        StartCooking();
+    }
+    else
+    {
+        Debug.Log("Recipe not complete yet");
+    }
+}
 
     protected bool CheckRecipe()
     {

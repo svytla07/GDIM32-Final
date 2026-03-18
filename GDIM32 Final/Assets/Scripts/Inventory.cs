@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -70,6 +71,21 @@ public class Inventory : MonoBehaviour
         inventory.Remove(inventoryId);
         ui.RemoveUIItem(inventoryId);
         audioSource.PlayOneShot(dropItemAudio);
+
+        StartCoroutine(PlayDropSoundIfNotInPot(droppedItemObj));
+    }
+
+    IEnumerator PlayDropSoundIfNotInPot(GameObject droppedItem)
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        if (droppedItem != null)
+        {
+            if (audioSource != null && dropItemAudio != null)
+                audioSource.PlayOneShot(dropItemAudio);
+        }
+
+
     }
     public List<string> DialogueInventory()
     {
