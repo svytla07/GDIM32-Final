@@ -9,7 +9,7 @@ public class DialogueNode : ScriptableObject
     public string npcName;
     public string[] dialogueLines;
     public bool[] autoProgressLines;
-    public bool[] endDialogue;
+    public bool[] endDialogueLines;
     
     public DialogueChoice[] choices;
 }
