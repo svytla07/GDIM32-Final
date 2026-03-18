@@ -39,7 +39,36 @@ public class Manager : MonoBehaviour
     private void StartDialogue(DialogueNode node)
     {
         _currentNode = node; 
+        _currentLineIndex = 0; 
+        DialogueController.Instance.ShowDialogueUI(true);
+        DialogueController.Instance.SetNPCInfo(node.npcName)
+        DialogueController.Instance.SetDialogueText(node.dialogueLines[0]);
     }
+
+    public void NextLine()
+    {
+        if (_currentNode == null) return; 
+
+        if (_currentNode.endDialogueLines[_currentLineIndex])
+        {
+            DialogueController.Instance.ShowDialogueUI(false);
+            _currentNode = null;
+            return; 
+        }
+
+        _currentLineIndex++;
+        if(_currentLineIndex >= _currentNode.dialogueLines.Length)
+        {
+            DialogueController.Instance.ShowDialogueUI(false);
+            _currentNode = null;
+            return;
+        }
+
+        DialogueController.Instance.SetDialogueText(_currentNode.dialogueLines[_currentLineIndex]);
+
+    }
+
+    public bool IsDialogueOpen => currentNode != null;
 }
     
 
