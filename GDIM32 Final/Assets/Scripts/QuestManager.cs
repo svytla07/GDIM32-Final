@@ -16,7 +16,7 @@ public class QuestManager : MonoBehaviour
     public Quest cookBeefPho;
 
     public Quest _currentQuest;
-    public Recipe GetCurrentRecipe() => _currentQuest?.recipe;
+    
 
     void Awake()
     {
@@ -52,8 +52,8 @@ public class QuestManager : MonoBehaviour
         if (_currentQuest == gatherIngredients)
             SetQuest(cookChickenPho);
         else if (_currentQuest == cookChickenPho)
-            SetQuest(cookBeefPho)
+            SetQuest(cookBeefPho);
         else
-            Debug.Log("all quest complete")
+            Debug.Log("all quest complete");
     }
 }
