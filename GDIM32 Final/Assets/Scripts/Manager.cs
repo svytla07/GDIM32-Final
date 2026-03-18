@@ -41,7 +41,7 @@ public class Manager : MonoBehaviour
         _currentNode = node; 
         _currentLineIndex = 0; 
         DialogueController.Instance.ShowDialogueUI(true);
-        DialogueController.Instance.SetNPCInfo(node.npcName)
+        DialogueController.Instance.SetNPCInfo(node.npcName);
         DialogueController.Instance.SetDialogueText(node.dialogueLines[0]);
     }
 
@@ -68,7 +68,7 @@ public class Manager : MonoBehaviour
 
     }
 
-    public bool IsDialogueOpen => currentNode != null;
+    public bool IsDialogueOpen => _currentNode != null;
 }
     
 

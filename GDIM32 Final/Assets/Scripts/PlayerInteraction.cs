@@ -13,10 +13,16 @@ public class PlayerInteraction : MonoBehaviour
 
     private DroppedItem currentLookingAt; 
     private Bowl _currentBowl;
+    private Manager _currentManager; 
 
     void Update()
     {
-        
+        if (_currentManager != null && _currentManager.IsDialogueOpen)
+        {
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E))
+                _currentManager.NextLine();
+            return;
+        }
         CheckForItem();
 
         
