@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 950a8108182424449813a014a2b7678b, type: 3}
   m_Name: DialogueNode
   m_EditorClassIdentifier: 
-  npcName: 
+  npcName: Manager
   dialogueLines: []
   autoProgressLines: 
   endDialogueLines: 
-  choices: []
+  choices:
+  - dialogueIndex: 0
+    choices: []
+    nextDialogueIndexes: 
+  - dialogueIndex: 0
+    choices: []
+    nextDialogueIndexes: 
