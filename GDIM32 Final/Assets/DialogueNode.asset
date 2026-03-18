@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 950a8108182424449813a014a2b7678b, type: 3}
   m_Name: DialogueNode
   m_EditorClassIdentifier: 
-  _dialogueIntro:
-  - 
-  - 
-  _dialogueCorrect:
-  - 
-  - 
-  - 
-  - 
-  _dialogueIncorrect:
-  - 
-  - 
+  npcName: Manager
+  dialogueLines:
+  - Hello, are you ready for your first day?
+  - Great! Your first task is to gather ingredients
+  - It's okay, this job isn't hard. The first thing you need to do is gather ingredients
+  autoProgressLines: 01
+  endDialogueLines: 000101
+  choices:
+  - dialogueIndex: 0
+    choices:
+    - Yes
+    - No
+    nextDialogueIndexes: 0100000002000000

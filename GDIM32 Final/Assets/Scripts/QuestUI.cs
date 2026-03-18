@@ -5,7 +5,7 @@ using TMPro;
 
 public class QuestUI : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI questText;
+    [SerializeField] private TMP_Text questText;
     
    
     void Update()
