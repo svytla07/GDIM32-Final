@@ -75,13 +75,12 @@ void OnIngredientTriggered(DroppedItem droppedItem)
     if (rb != null)
     {
         rb.isKinematic = true;
-        Debug.Log("set rigidbody to kinematic");
+        
     }
 
     _addedIngredients.Add(droppedItem.item);
 
-         Debug.Log($"Added {droppedItem.item.name} to pot. Total: {_addedIngredients.Count}");
-    
+        
     
     Inventory inventory = FindObjectOfType<Inventory>();
     if (inventory != null)
@@ -93,8 +92,7 @@ void OnIngredientTriggered(DroppedItem droppedItem)
 
     if (_audioSource != null && _addIngredientSound != null)
         _audioSource.PlayOneShot(_addIngredientSound);
-    else 
-        Debug.LogError("the add ingredient sound is nul...");
+    
     
     Debug.Log($"Checking recipe... Need {_targetRecipe?.requiredIngredients.Count}, Have {_addedIngredients.Count}");
 
@@ -150,7 +148,7 @@ void OnIngredientTriggered(DroppedItem droppedItem)
 
     private IEnumerator CookingTimer()
     {
-        Debug.Log("CookingTimer coroutine started!");
+        
         yield return new WaitForSeconds(_targetRecipe.cooktime); 
         Debug.Log("Timer finished! Setting state to Done...");
 
