@@ -8,11 +8,13 @@ public class DialogueNode : ScriptableObject
 {
     public string npcName;
     public string[] dialogueLines;
+    public bool[] autoProgressLines;
+    public bool[] endDialogue;
     
     public DialogueChoice[] choices;
 }
 
-[System.Serializible]
+[System.Serializable]
 public class DialogueChoice {
     public int dialogueIndex;
     public string[] choices;
