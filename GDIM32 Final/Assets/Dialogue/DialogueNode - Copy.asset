@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 950a8108182424449813a014a2b7678b, type: 3}
-  m_Name: DialogueNode
+  m_Name: DialogueNode - Copy
   m_EditorClassIdentifier: 
   npcName: Manager
   dialogueLines:

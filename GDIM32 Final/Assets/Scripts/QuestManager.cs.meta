@@ -3,7 +3,10 @@ guid: 4f38f277e91714e459b29a8e1a617002
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _currentRecipe: {instanceID: 0}
+  - _chickenPhoRecipe: {fileID: 11400000, guid: 1987774d7f16c4c5a95506e5501c45d8, type: 2}
+  - _beefPhoRecipe: {fileID: 11400000, guid: c89cfa179f27f4df2add60141cb156da, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -48,6 +48,6 @@ public class IngredientSpawner : MonoBehaviour
             }
         }
 
-        Debug.Log("Ingredients respawned!");
+        Debug.Log("ingredients respawned!");
     }
 }
