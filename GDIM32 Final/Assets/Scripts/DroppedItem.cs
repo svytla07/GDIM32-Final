@@ -9,7 +9,8 @@ public class DroppedItem : MonoBehaviour
     bool autoStart;
 
     [SerializeField]
-    float enabledPickupDelay = 0f;
+    float enabledPickupDelay = 3.0f;
+    
 
     [Header("State")]
     public Item item;
@@ -17,6 +18,9 @@ public class DroppedItem : MonoBehaviour
     public bool isInPot = false; 
     private bool _isBeingDestroyed = false; 
     private bool _initialized = false; 
+    public bool canPickup = false; 
+
+
 
     void Start()
     {

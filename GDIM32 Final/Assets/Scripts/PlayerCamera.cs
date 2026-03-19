@@ -12,6 +12,8 @@ public class PlayerCamera : MonoBehaviour
     float xRotation;
     float yRotation;
 
+    private bool _cameraLocked = true;
+
     void Start()
     {
 
@@ -22,11 +24,29 @@ public class PlayerCamera : MonoBehaviour
    
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.V)) 
+        {
+            _cameraLocked = !_cameraLocked;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = !_cameraLocked;
+        }
+
+        if (Cursor.lockState != CursorLockMode.Locked) return;
+
         float sensitivityMultiplier = 1f;
 
-         #if UNITY_WEBGL && !UNITY_EDITOR
+        #if UNITY_WEBGL && !UNITY_EDITOR
         sensitivityMultiplier = 0.1f;
     #endif
+
+
+       
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
 
@@ -39,16 +59,7 @@ public class PlayerCamera : MonoBehaviour
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
 
-        
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-
-        if (Input.GetKeyDown(KeyCode.V)) {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
+    
     }
 
 }

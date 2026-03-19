@@ -13,15 +13,9 @@ MonoBehaviour:
   m_Name: DialogueNode - Copy
   m_EditorClassIdentifier: 
   npcName: Manager
-  dialogueLines:
-  - Hello, are you ready for your first day?
-  - Great! Your first task is to gather ingredients
-  - It's okay, this job isn't hard. The first thing you need to do is gather ingredients
-  autoProgressLines: 01
-  endDialogueLines: 000101
-  choices:
-  - dialogueIndex: 0
-    choices:
-    - Yes
-    - No
-    nextDialogueIndexes: 0100000002000000
+  _thoughtBubbleSprite: {fileID: 21300000, guid: 0171b2fbe0c674701b7184398d0f550c, type: 3}
+  _lines:
+  - 'great! all you have to do is gather the ingredients and put them into the pot! '
+  _playerChoices: []
+  _managerReplies: []
+  questAction: 1

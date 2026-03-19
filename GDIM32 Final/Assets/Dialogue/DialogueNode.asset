@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: DialogueNode
   m_EditorClassIdentifier: 
   npcName: Manager
-  dialogueLines: []
-  autoProgressLines: 
-  endDialogueLines: 
-  choices:
-  - dialogueIndex: 0
-    choices: []
-    nextDialogueIndexes: 
-  - dialogueIndex: 0
-    choices: []
-    nextDialogueIndexes: 
+  _thoughtBubbleSprite: {fileID: 21300000, guid: 120f458e1a9744edf8d050ea4b97c98a, type: 3}
+  _lines:
+  - hey! are you ready to make some pho?
+  _playerChoices:
+  - yes!
+  - no...
+  _managerReplies:
+  - {fileID: 11400000, guid: 2a40196751b3a3547af9be3facc76f2d, type: 2}
+  - {fileID: 11400000, guid: b3967056aa424411fafbc82abff2b060, type: 2}
+  questAction: 0

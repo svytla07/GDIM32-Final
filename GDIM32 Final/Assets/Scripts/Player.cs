@@ -5,8 +5,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private Transform orientation; 
 
+    private Rigidbody _rb;
+
+    void Awake()
+    {
+        Application.targetFrameRate = 144; 
+        QualitySettings.vSyncCount = 0; 
+        _rb = GetComponent<Rigidbody>(); 
+    }
+
    
-    void Update()
+    void FixedUpdate()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");

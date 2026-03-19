@@ -38,6 +38,44 @@ public class Inventory : MonoBehaviour
         Debug.Log(inventoryId);
     }
 
+    private void CheckGatherQuestComplete()
+    {
+        Quest currentQuest = QuestManager.Instance?._currentQuest;
+
+        if (currentQuest == QuestManager.Instance?.gatherIngredients)
+        {
+            Recipe nextRecipe = QuestManager.Instance.GetNextPhoQuest().recipe;
+
+            if (HasAllIngredients(nextRecipe))
+            {
+                Debug.Log("all ingredients collected, moving on to next quest");
+                Quest nextQuest = QuestManager.Instance.GetNextPhoQuest();
+                QuestManager.Instance.SetQuest(nextQuest);
+            }
+        }
+    }
+
+    private bool HasAllIngredients(Recipe recipe)
+    {
+    if (recipe == null) return false;
+    
+    foreach (Item required in recipe.requiredIngredients)
+    {
+        bool found = false;
+        foreach (Item owned in inventory.Values)
+        {
+            if (owned.id == required.id)
+            {
+                found = true;
+                break;
+            }
+        }
+        if (!found) return false;
+    }
+    
+    return true;
+    }
+
     public void DropItem(string inventoryId)
     {
         Debug.Log($"DropItem called with ID: {inventoryId}");

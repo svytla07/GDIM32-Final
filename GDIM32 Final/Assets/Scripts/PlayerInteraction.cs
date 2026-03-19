@@ -13,16 +13,11 @@ public class PlayerInteraction : MonoBehaviour
 
     private DroppedItem currentLookingAt; 
     private Bowl _currentBowl;
-    private Manager _currentManager; 
+ 
 
     void Update()
     {
-        if (_currentManager != null && _currentManager.IsDialogueOpen)
-        {
-            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E))
-                _currentManager.NextLine();
-            return;
-        }
+    
         CheckForItem();
 
         
@@ -54,6 +49,28 @@ public class PlayerInteraction : MonoBehaviour
         }
         }
 
+    if (Input.GetKeyDown(KeyCode.E))
+        {
+            Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+            if (Physics.Raycast(ray, out RaycastHit hit, interactRange))
+            {
+                Manager manager = hit.collider.GetComponent<Manager>()
+                   ?? hit.collider.GetComponentInParent<Manager>();
+                if (manager != null)
+                {   
+                    DialogueController dc = manager.GetComponent<DialogueController>();
+                    if (dc != null)
+                    {
+                        if (!dc._runningDialogue)
+                            manager.Talk();
+                        else 
+                            dc.AdvanceDialogue();
+                    }
+                    return;
+                }
+            }
+        }
+
     }
 
     void CheckForItem()
@@ -80,14 +97,8 @@ public class PlayerInteraction : MonoBehaviour
                 Debug.Log("tag matches");
                 DroppedItem droppedItem = hit.collider.GetComponent<DroppedItem>()
                         ?? hit.collider.GetComponentInParent<DroppedItem>();
-
-
-                if (droppedItem != null && !droppedItem.pickedUp)
-                {
-                    currentLookingAt = droppedItem;
-                    _currentBowl = null;
-                    return;
-                }
+                currentLookingAt = droppedItem;
+                return;
 
                 
             }
@@ -104,6 +115,7 @@ public class PlayerInteraction : MonoBehaviour
 
         droppedItem.pickedUp = true;
         inventory.AddItem(droppedItem.item);
+        QuestManager.Instance.GatherIngredient();
         Destroy(droppedItem.gameObject);
 
         if (audioSource && pickUpItemAudio)

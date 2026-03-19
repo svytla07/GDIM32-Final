@@ -9,6 +9,7 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private Recipe _currentRecipe; 
     [SerializeField] private Recipe _chickenPhoRecipe;
     [SerializeField] private Recipe _beefPhoRecipe;
+    
 
 
     public Quest gatherIngredients;
@@ -16,6 +17,8 @@ public class QuestManager : MonoBehaviour
     public Quest cookBeefPho;
 
     public Quest _currentQuest;
+
+
     
 
     void Awake()
@@ -47,13 +50,33 @@ public class QuestManager : MonoBehaviour
 
     }
 
+    public void GatherIngredient()
+    {
+         gatherIngredients.AddProgress(1);
+    }
+
     public void AdvanceQuest()
     {
-        if (_currentQuest == gatherIngredients)
-            SetQuest(cookChickenPho);
-        else if (_currentQuest == cookChickenPho)
-            SetQuest(cookBeefPho);
-        else
+
+        if (_currentQuest == cookChickenPho)
+        {
+            cookChickenPho.state = QuestState.Completed; 
+            Debug.Log("chicken pho complete, talk to manager");
+        }
+        else if (_currentQuest == cookBeefPho)
+        {
+            cookBeefPho.state = QuestState.Completed;
+            Debug.Log("beef pho complete, talk to manager");
+        }
+
             Debug.Log("all quest complete");
+    }
+
+    public Quest GetNextPhoQuest()
+    {
+        if (cookChickenPho.state == QuestState.Completed)
+        return cookBeefPho;
+    else
+        return cookChickenPho;
     }
 }

@@ -10,9 +10,16 @@ public class Manager : MonoBehaviour
   [SerializeField] private DialogueNode _chickenPhoDialogue;
   [SerializeField] private DialogueNode _beefPhoDialogue;
   [SerializeField] private DialogueNode _completedDialogue;
+  [SerializeField] private Recipe _chickenPhoRecipe;
+  [SerializeField] private Recipe _beefPhoRecipe; 
 
   private DialogueNode _currentNode; 
-  private int _currentLineIndex = 0;
+  private DialogueController _dialogueController; 
+
+  void Start()
+  {
+    _dialogueController = GetComponent<DialogueController>();
+  }
 
     public void Talk() 
     {
@@ -23,52 +30,38 @@ public class Manager : MonoBehaviour
 
         if (gather.state == QuestState.NotStarted) 
         {
-            QuestManager.Instance.SetQuest(gather);
+            _dialogueController.SetStartNode(_greetingDialogue);
         }
-        else if (gather.state == QuestState.Completed && cookChicken.state == QuestState.NotStarted) 
+        else if (gather.state == QuestState.InProgress)
         {
-            QuestManager.Instance.SetQuest(cookChicken);
+            _dialogueController.SetStartNode(_gatheringDialogue); //keep gathering
         }
-        else if (gather.state == QuestState.Completed && cookChicken.state == QuestState.Completed && cookBeef.state == QuestState.NotStarted) 
+        else if (gather.state == QuestState.Completed && cookChicken.state == QuestState.NotStarted && cookBeef.state == QuestState.NotStarted) 
         {
-           QuestManager.Instance.SetQuest(cookBeef);
-        }
+            Recipe current = QuestManager.Instance.GetCurrentRecipe();
     
-    }
-
-    private void StartDialogue(DialogueNode node)
-    {
-        _currentNode = node; 
-        _currentLineIndex = 0; 
-        DialogueController.Instance.ShowDialogueUI(true);
-        DialogueController.Instance.SetNPCInfo(node.npcName);
-        DialogueController.Instance.SetDialogueText(node.dialogueLines[0]);
-    }
-
-    public void NextLine()
-    {
-        if (_currentNode == null) return; 
-
-        if (_currentNode.endDialogueLines[_currentLineIndex])
-        {
-            DialogueController.Instance.ShowDialogueUI(false);
-            _currentNode = null;
-            return; 
+            if (current == _chickenPhoRecipe)
+            QuestManager.Instance.SetQuest(cookChicken);
+            else if (current == _beefPhoRecipe)
+            QuestManager.Instance.SetQuest(cookBeef);
+            _dialogueController.SetStartNode(_chickenPhoDialogue);
         }
-
-        _currentLineIndex++;
-        if(_currentLineIndex >= _currentNode.dialogueLines.Length)
+        else if ((cookChicken.state == QuestState.Completed && cookBeef.state == QuestState.NotStarted) 
+        || (cookBeef.state == QuestState.Completed && cookChicken.state == QuestState.NotStarted))
         {
-            DialogueController.Instance.ShowDialogueUI(false);
-            _currentNode = null;
-            return;
+            Quest next = QuestManager.Instance.GetNextPhoQuest();
+            QuestManager.Instance.SetQuest(next);
+            _dialogueController.SetStartNode(_beefPhoDialogue);
         }
-
-        DialogueController.Instance.SetDialogueText(_currentNode.dialogueLines[_currentLineIndex]);
-
+        else if (cookChicken.state == QuestState.Completed && cookBeef.state == QuestState.Completed)
+        {
+            _dialogueController.SetStartNode(_completedDialogue);
+        }
+        _dialogueController.AdvanceDialogue();
     }
 
-    public bool IsDialogueOpen => _currentNode != null;
+   
+    
 }
     
 

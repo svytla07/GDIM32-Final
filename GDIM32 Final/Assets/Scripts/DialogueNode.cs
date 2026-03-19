@@ -7,16 +7,20 @@ using UnityEngine;
 public class DialogueNode : ScriptableObject
 {
     public string npcName;
-    public string[] dialogueLines;
-    public bool[] autoProgressLines;
-    public bool[] endDialogueLines;
+
+    public Sprite _thoughtBubbleSprite;
+
+    public string[] _lines;
     
-    public DialogueChoice[] choices;
+    
+    public string[] _playerChoices;
+
+    public DialogueNode[] _managerReplies; 
+
+    public enum QuestAction { None, StartGather, StartChickenPho, StartBeefPho }
+    public QuestAction questAction = QuestAction.None;
+
+
 }
 
-[System.Serializable]
-public class DialogueChoice {
-    public int dialogueIndex;
-    public string[] choices;
-    public int[] nextDialogueIndexes;
-}
+

@@ -6,42 +6,116 @@ using TMPro;
 
 public class DialogueController : MonoBehaviour
 {
-    public static DialogueController Instance { get; private set;}
-    
-    public GameObject dialoguePanel;
-    public TMP_Text dialogueText, nameText;
-    public Transform choiceContainer;
-    public GameObject choiceButtonPrefab;
+    [SerializeField] private float _interactionDistance = 10.0f;
+    [SerializeField] private Sprite _interactionPromptSprite;
+    [SerializeField] private Image _thoughtBubble; 
+    [SerializeField] private DialogueUI _dialogue; 
+    [SerializeField] private DialogueNode _dialogueStartNode; 
 
-    void Awake()
+    private DialogueNode _currentNode; 
+    private int _currentLine = 0; 
+    public bool _runningDialogue;
+    public bool _waitingForPlayerResponse;
+    private Transform _player;
+
+    private void Start()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        _currentNode = _dialogueStartNode;
     }
 
-    public void ShowDialogueUI (bool show) {
-        dialoguePanel.SetActive(show);
+    private void Update()
+    {
+        if (Dialogue.Instance == null) return;
+
+         float dist = Vector3.Distance(transform.position, Dialogue.Instance.transform.position);
+
+        if (dist < _interactionDistance)
+        { if (Input.GetKeyDown(KeyCode.E) && !_waitingForPlayerResponse)
+                AdvanceDialogue();
+        }
+        
+        else
+        {
+            if (!_runningDialogue)
+            {
+                if (_thoughtBubble != null)
+                _thoughtBubble.gameObject.SetActive(false);
+            }
+        }
     }
 
-    public void SetNPCInfo (string npcName) {
-        nameText.text = npcName;
+    public void SetStartNode(DialogueNode node)
+    {
+        _dialogueStartNode = node;
+        _currentNode = node;
+        _currentLine = 0; 
+        
     }
 
-    public void SetDialogueText (string text) {
-        dialogueText.text = text;
+    public void AdvanceDialogue()
+    {
+        Debug.Log($"AdvanceDialogue - line: {_currentLine}, total: {_currentNode._lines.Length}, choices: {_currentNode._playerChoices?.Length ?? 0}");
+        if (!_runningDialogue)
+        {
+            _runningDialogue = true;
+            TriggerQuestAction(_currentNode);
+        }
+       
+        if (_currentLine < _currentNode._lines.Length)
+        {
+            _dialogue.ShowDialogue(_currentNode._lines[_currentLine]);
+
+            _currentLine++;
+           
+        }
+        else if (_currentNode._playerChoices != null &&_currentNode._playerChoices.Length > 0)
+        {
+             Debug.Log("Showing choices!");
+            _waitingForPlayerResponse = true;
+            _dialogue.ShowPlayerOptions(_currentNode._playerChoices);
+
+        }
+        else 
+        {
+            EndDialogue();
+        }
+    }
+    private void TriggerQuestAction(DialogueNode node)
+    {
+        switch (node.questAction)
+        {
+            case DialogueNode.QuestAction.StartGather:
+                QuestManager.Instance.SetQuest(QuestManager.Instance.gatherIngredients);
+                break; 
+            case DialogueNode.QuestAction.StartChickenPho:
+                QuestManager.Instance.SetQuest(QuestManager.Instance.cookChickenPho);
+                break;
+            case DialogueNode.QuestAction.StartBeefPho:
+                QuestManager.Instance.SetQuest(QuestManager.Instance.cookBeefPho);
+                break;
+        }
     }
 
-    public void ClearChoices() {
-        foreach (Transform child in choiceContainer) Destroy(child.gameObject);
+    private void EndDialogue()
+    {
+        _runningDialogue = false; 
+        _waitingForPlayerResponse = false;
+        _currentNode = _dialogueStartNode;
+        _currentLine = 0;
+        _dialogue.HideDialogue();
+        _thoughtBubble.gameObject.SetActive(false);
     }
 
-    public GameObject CreateChoiceButton(string choiceText, UnityEngine.Events.UnityAction onClick) {
-        GameObject choiceButton = Instantiate(choiceButtonPrefab, choiceContainer);
-        choiceButton.GetComponentInChildren<TMP_Text>().text = choiceText;
-        choiceButton.GetComponent<Button>().onClick.AddListener(onClick);
-        return choiceButton;
-    }
+    public void SelectedOption(int option)
+    {
+        _currentLine = 0;
+        _waitingForPlayerResponse = false; 
 
+        _currentNode = _currentNode._managerReplies[option];
+
+        TriggerQuestAction(_currentNode);
+        AdvanceDialogue();
+    }
    
    
 }

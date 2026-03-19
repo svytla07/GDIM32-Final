@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Noodles : MonoBehaviour
 {
-    private bool _interacted = false; 
-    
+    private bool _interacted = false;
     public void Interact()
     {
         BowlHolder holder = BowlHolder.Instance;
