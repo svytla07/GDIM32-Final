@@ -81,7 +81,7 @@ public class PlayerInteraction : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * interactRange, Color.red);
         if (Physics.Raycast(ray, out RaycastHit hit, interactRange))
         {
-            Debug.Log($"Hit: {hit.collider.name}");
+            //Debug.Log($"Hit: {hit.collider.name}");
 
 
             Bowl bowl = hit.collider.GetComponent<Bowl>()

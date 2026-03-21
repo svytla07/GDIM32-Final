@@ -32,9 +32,11 @@ public class Quest
         if (state != QuestState.InProgress) return;
 
         currentAmount += amount;
+        Debug.Log("amount reached: " + currentAmount);
 
         if (currentAmount >= requiredAmount)
         {
+            Debug.Log("moving on from " + questName );
             state = QuestState.Completed;
         }
     }

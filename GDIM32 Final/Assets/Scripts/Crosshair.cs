@@ -33,7 +33,7 @@ public class Crosshair : MonoBehaviour
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         if (Physics.Raycast(ray, out RaycastHit hit, interactRange))
         {
-            Debug.Log($"Crosshair hit: {hit.collider.name} tag: {hit.collider.tag}");
+            
 
             DroppedItem droppedItem = hit.collider.GetComponent<DroppedItem>() 
                            ?? hit.collider.GetComponentInParent<DroppedItem>();

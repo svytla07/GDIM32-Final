@@ -43,6 +43,7 @@ public class QuestManager : MonoBehaviour
     {
         _currentQuest = quest; 
         _currentQuest.state = QuestState.InProgress;
+        Debug.Log("quest set to" + _currentQuest.questName);
 
         if (quest.recipe != null)
             FindObjectOfType<Pot>()?.UpdateRecipe(quest.recipe);
@@ -53,14 +54,22 @@ public class QuestManager : MonoBehaviour
     public void GatherIngredient()
     {
          gatherIngredients.AddProgress(1);
+         Debug.Log("gathering +1");
+        
+        if (gatherIngredients.state == QuestState.Completed)
+        {
+            SetQuest(cookChickenPho);
+        }
     }
 
     public void AdvanceQuest()
     {
+        
 
         if (_currentQuest == cookChickenPho)
         {
-            cookChickenPho.state = QuestState.Completed; 
+
+             cookChickenPho.state = QuestState.Completed; 
             Debug.Log("chicken pho complete, talk to manager");
         }
         else if (_currentQuest == cookBeefPho)
