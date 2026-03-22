@@ -58,6 +58,7 @@ public class DialogueController : MonoBehaviour
         if (!_runningDialogue)
         {
             _runningDialogue = true;
+            BowlHolder.Instance?.DismissBowl();
             TriggerQuestAction(_currentNode);
         }
        

@@ -133,6 +133,12 @@ public class BowlHolder : MonoBehaviour
 
         Debug.Log("manager dialogue moving forward");
     }
+
+    public void DismissBowl()
+    {
+        _heldBowl.SetActive(false);
+        _heldBowl = null; 
+    }
     
     
 

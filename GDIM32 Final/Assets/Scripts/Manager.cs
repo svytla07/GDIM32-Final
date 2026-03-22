@@ -13,8 +13,11 @@ public class Manager : MonoBehaviour
   [SerializeField] private Recipe _chickenPhoRecipe;
   [SerializeField] private Recipe _beefPhoRecipe; 
 
+
+
   private DialogueNode _currentNode; 
   private DialogueController _dialogueController; 
+  protected GameObject _heldBowl; 
 
   void Start()
   {
@@ -46,8 +49,7 @@ public class Manager : MonoBehaviour
             QuestManager.Instance.SetQuest(cookBeef);
             _dialogueController.SetStartNode(_chickenPhoDialogue);
         }
-        else if ((cookChicken.state == QuestState.Completed && cookBeef.state == QuestState.NotStarted) 
-        || (cookBeef.state == QuestState.Completed && cookChicken.state == QuestState.NotStarted))
+        else if (cookChicken.state == QuestState.Completed && cookBeef.state == QuestState.NotStarted) 
         {
             Quest next = QuestManager.Instance.GetNextPhoQuest();
             QuestManager.Instance.SetQuest(next);
