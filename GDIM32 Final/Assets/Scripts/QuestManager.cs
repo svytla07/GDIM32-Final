@@ -18,7 +18,6 @@ public class QuestManager : MonoBehaviour
 
     public Quest _currentQuest;
 
-
     
 
     void Awake()
@@ -64,18 +63,20 @@ public class QuestManager : MonoBehaviour
 
     public void AdvanceQuest()
     {
-        
 
         if (_currentQuest == cookChickenPho)
         {
 
              cookChickenPho.state = QuestState.Completed; 
             Debug.Log("chicken pho complete, talk to manager");
+            IngredientSpawner.Instance.RespawnAll();
+
         }
         else if (_currentQuest == cookBeefPho)
         {
             cookBeefPho.state = QuestState.Completed;
             Debug.Log("beef pho complete, talk to manager");
+            IngredientSpawner.Instance.RespawnAll();
         }
 
             Debug.Log("all quest complete");
