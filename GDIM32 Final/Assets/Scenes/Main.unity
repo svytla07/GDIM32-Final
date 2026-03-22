@@ -1248,7 +1248,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 352834922}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe3db5ca8d118469db5b5c95775ef629, type: 3}
   m_Name: 
@@ -2642,6 +2642,7 @@ MonoBehaviour:
   _playerCamera: {fileID: 732389664}
   _noodlesPrefab: {fileID: 131672990}
   _soupPrefab: {fileID: 9053081016006684986, guid: 71e3e555652184d91993f3e2cb4f14e8, type: 3}
+  _heldBowl: {fileID: 0}
 --- !u!1 &732652966
 GameObject:
   m_ObjectHideFlags: 0
@@ -2941,7 +2942,7 @@ MonoBehaviour:
   _greetingDialogue: {fileID: 11400000, guid: 5d1c287850266481fb10417aa1d4954b, type: 2}
   _gatheringDialogue: {fileID: 11400000, guid: 2a40196751b3a3547af9be3facc76f2d, type: 2}
   _chickenPhoDialogue: {fileID: 11400000, guid: 0f6260e0932bf4aec9186d3f2799981b, type: 2}
-  _beefPhoDialogue: {fileID: 11400000, guid: 77f10270bfffb4a3e9bd4263b96245ea, type: 2}
+  _beefPhoDialogue: {fileID: 11400000, guid: 5c1e28bbd947e458f8993c15842c2b18, type: 2}
   _completedDialogue: {fileID: 11400000, guid: 5c1e28bbd947e458f8993c15842c2b18, type: 2}
   _chickenPhoRecipe: {fileID: 11400000, guid: 1987774d7f16c4c5a95506e5501c45d8, type: 2}
   _beefPhoRecipe: {fileID: 11400000, guid: c89cfa179f27f4df2add60141cb156da, type: 2}

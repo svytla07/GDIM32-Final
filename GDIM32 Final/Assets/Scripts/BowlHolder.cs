@@ -12,7 +12,7 @@ public class BowlHolder : MonoBehaviour
     [SerializeField] private GameObject _soupPrefab; 
     
 
-    private GameObject _heldBowl;
+    public GameObject _heldBowl;
     private bool _hasNoodles = false; 
     private bool _hasSoup = false; 
 
@@ -128,6 +128,8 @@ public class BowlHolder : MonoBehaviour
             Instantiate(_currentRecipe.result.prefab, spawnPos, Quaternion.identity);
         }
         QuestManager.Instance?.AdvanceQuest(); 
+
+
 
         Debug.Log("manager dialogue moving forward");
     }
