@@ -35,13 +35,13 @@ public class Inventory : MonoBehaviour
 
         inventory.Add(inventoryId, item);
         ui.AddUIItem(inventoryId, item);
-        Debug.Log(inventoryId);
+    
     }
 
 
     public void DropItem(string inventoryId)
     {
-        Debug.Log($"DropItem called with ID: {inventoryId}");
+       
 
         if (!inventory.TryGetValue(inventoryId, out Item item)) return;
         

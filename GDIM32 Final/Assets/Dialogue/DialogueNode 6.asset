@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 950a8108182424449813a014a2b7678b, type: 3}
   m_Name: DialogueNode 6
   m_EditorClassIdentifier: 
-  npcName: 
-  _thoughtBubbleSprite: {fileID: 0}
+  npcName: finish
+  _thoughtBubbleSprite: {fileID: 21300004, guid: dffef66376be4fa480fb02b19edbe903, type: 3}
   _lines:
   - 'so yummy! '
-  - 'thanks for completing all the tasks! '
-  - you are so hired
+  - congratulations you're hired buddy
   _playerChoices: []
   _managerReplies: []
   questAction: 0

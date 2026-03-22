@@ -2940,10 +2940,10 @@ MonoBehaviour:
   _gatheringDialogue: {fileID: 11400000, guid: 2a40196751b3a3547af9be3facc76f2d, type: 2}
   _chickenPhoDialogue: {fileID: 0}
   _beefPhoDialogue: {fileID: 11400000, guid: 5c1e28bbd947e458f8993c15842c2b18, type: 2}
-  _completedDialogue: {fileID: 11400000, guid: 5c1e28bbd947e458f8993c15842c2b18, type: 2}
+  _completedDialogue: {fileID: 11400000, guid: 0f6260e0932bf4aec9186d3f2799981b, type: 2}
   _chickenPhoRecipe: {fileID: 11400000, guid: 1987774d7f16c4c5a95506e5501c45d8, type: 2}
   _beefPhoRecipe: {fileID: 11400000, guid: c89cfa179f27f4df2add60141cb156da, type: 2}
-  _animator: {fileID: 829851109}
+  _animator: {fileID: 1296764457}
 --- !u!4 &829851107 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d7061d2ec501adb4da1e842bf1f2be57, type: 3}
@@ -2968,11 +2968,6 @@ MonoBehaviour:
   _dialogueStartNode: {fileID: 11400000, guid: 5d1c287850266481fb10417aa1d4954b, type: 2}
   _runningDialogue: 0
   _waitingForPlayerResponse: 0
---- !u!95 &829851109 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: d7061d2ec501adb4da1e842bf1f2be57, type: 3}
-  m_PrefabInstance: {fileID: 1491968473}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &854454894
 GameObject:
   m_ObjectHideFlags: 0
@@ -3200,6 +3195,7 @@ MonoBehaviour:
   _currentRecipe: {fileID: 0}
   _chickenPhoRecipe: {fileID: 11400000, guid: 1987774d7f16c4c5a95506e5501c45d8, type: 2}
   _beefPhoRecipe: {fileID: 11400000, guid: c89cfa179f27f4df2add60141cb156da, type: 2}
+  allQuestsComplete: 0
 --- !u!4 &882022855
 Transform:
   m_ObjectHideFlags: 0
@@ -4026,6 +4022,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pot: {fileID: 1263949506}
+--- !u!95 &1296764457 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6535647943221909187, guid: 252d84e2d6dc6604e91321bc2d912fc8, type: 3}
+  m_PrefabInstance: {fileID: 2063653674}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1347746141
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,6 +29,11 @@ public class QuestManager : MonoBehaviour
         if (Instance == null)Instance = this;
         else Destroy(gameObject);
 
+        
+    }
+
+    void Start()
+    {
         gatherIngredients = new Quest("Gather Ingredients", 5);
         cookChickenPho = new Quest("Cook Chicken Pho", 1, _chickenPhoRecipe);
         cookBeefPho = new Quest("Cook Beef Pho", 1, _beefPhoRecipe);
@@ -44,6 +49,7 @@ public class QuestManager : MonoBehaviour
 
     public void SetQuest(Quest quest)
     {
+        Debug.Log($"SetQuest: {quest.questName}, quest.recipe: {quest.recipe?.name ?? "NULL"}, _targetRecipe on pot: {FindObjectOfType<Pot>()?._targetRecipe?.name ?? "NULL"}");
         _currentQuest = quest; 
         _currentQuest.state = QuestState.InProgress;
         Debug.Log("quest set to" + _currentQuest.questName);
@@ -67,9 +73,10 @@ public class QuestManager : MonoBehaviour
         
         if (gatherIngredients.state == QuestState.Completed)
         {
+            Debug.Log($"gather complete - cookChicken: {cookChickenPho.state}, cookBeef: {cookBeefPho.state}");
             if (cookChickenPho.state == QuestState.Completed)
                 SetQuest(cookBeefPho);
-            else 
+            else if (cookBeefPho.state != QuestState.InProgress)
                 SetQuest(cookChickenPho);
         }
 
@@ -78,6 +85,11 @@ public class QuestManager : MonoBehaviour
 
     public void AdvanceQuest()
     {
+        Debug.Log($"AdvanceQuest called, _currentQuest: {_currentQuest?.questName ?? "NULL"}"); 
+
+        if (_currentQuest == null) return;
+        if (_currentQuest != cookChickenPho && _currentQuest != cookBeefPho) return;
+        
         if (_currentQuest == cookChickenPho)
         {
             cookChickenPho.state = QuestState.Completed; 
@@ -107,10 +119,13 @@ public class QuestManager : MonoBehaviour
 
     public void ResetQuest()
     {
-        _currentQuest.state = QuestState.NotStarted; 
         _currentQuest = null; 
         
+        
         gatherIngredients.ResetProgress();
+
+        FindObjectOfType<Pot>()?.UpdateRecipe(null);
+
         IngredientSpawner.Instance.RespawnAll();
 
         Debug.Log("quest reset, ingredients respawn");    

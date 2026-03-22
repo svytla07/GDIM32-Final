@@ -14,13 +14,14 @@ public class Pot : MonoBehaviour
     [SerializeField] private AudioClip _doneSound;
     [SerializeField] private MeshRenderer _cylinder;
 
-    [SerializeField] protected Recipe _targetRecipe;
+   public Recipe _targetRecipe;
 
     protected PotState _currentState = PotState.Empty;
     protected List<Item> _addedIngredients = new();
     protected MeshRenderer meshRenderer;
     protected Rigidbody _rigidbody;
     private Color _defaultColor;
+    private Coroutine _cookingCoroutine;
 
     public PotState CurrentState => _currentState;
 
@@ -98,7 +99,7 @@ void OnIngredientTriggered(DroppedItem droppedItem)
 
     droppedItem.gameObject.SetActive(false);
 
-         Debug.Log("Destroy() called!");
+        
 
         
     
@@ -116,7 +117,9 @@ void OnIngredientTriggered(DroppedItem droppedItem)
 
     protected bool CheckRecipe()
     {
+        
         if (_targetRecipe == null) return false;
+        Debug.Log($"CheckRecipe - required: {_targetRecipe.requiredIngredients.Count}, added: {_addedIngredients.Count}");
         if (_addedIngredients.Count != _targetRecipe.requiredIngredients.Count) return false;
 
         var added = new List<Item>(_addedIngredients);
@@ -144,13 +147,16 @@ void OnIngredientTriggered(DroppedItem droppedItem)
         if (_cylinder != null)
             _cylinder.material.color = _targetRecipe._resultcolor;
 
-            StartCoroutine(CookingTimer());
+        if (_cookingCoroutine != null)
+            StopCoroutine(_cookingCoroutine);
+
+            _cookingCoroutine = StartCoroutine(CookingTimer());
 
     }
 
     private IEnumerator CookingTimer()
     {
-        
+       
         yield return new WaitForSeconds(_targetRecipe.cooktime); 
         Debug.Log("Timer finished! Setting state to Done...");
 
@@ -158,13 +164,19 @@ void OnIngredientTriggered(DroppedItem droppedItem)
         _cookingUi.SetActive(false);
         _checkMark.SetActive(true);
 
-        
-        
         QuestManager.Instance?.AdvanceQuest();
+      
     }
     
     public void UpdateRecipe(Recipe newRecipe)
     {
+        
+
+        if (_cookingCoroutine !=null)
+        {
+            StopCoroutine(_cookingCoroutine);
+            _cookingCoroutine = null; 
+        }
         _targetRecipe = newRecipe;
         _currentState = PotState.Empty;
         _addedIngredients.Clear();

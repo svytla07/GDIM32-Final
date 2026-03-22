@@ -26,7 +26,7 @@ public class ItemUI : MonoBehaviour
 
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() => { 
-            Debug.Log($"BUTTON CLICKED! Item: {item.name}, ID: {inventoryId}");
+            
             removeItemAction.Invoke(inventoryId);
          });
     }

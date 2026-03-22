@@ -127,10 +127,7 @@ public class BowlHolder : MonoBehaviour
         {
             Instantiate(_currentRecipe.result.prefab, spawnPos, Quaternion.identity);
         }
-        QuestManager.Instance?.AdvanceQuest(); 
-
-
-
+        
         Debug.Log("manager dialogue moving forward");
     }
 

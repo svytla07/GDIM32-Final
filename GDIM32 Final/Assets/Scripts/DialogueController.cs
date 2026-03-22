@@ -86,8 +86,9 @@ public class DialogueController : MonoBehaviour
         switch (node.questAction)
         {
             case DialogueNode.QuestAction.StartGather:
+            if (QuestManager.Instance.gatherIngredients.state == QuestState.NotStarted)
                 QuestManager.Instance.SetQuest(QuestManager.Instance.gatherIngredients);
-                break; 
+            break; 
             case DialogueNode.QuestAction.StartChickenPho:
                 QuestManager.Instance.SetQuest(QuestManager.Instance.cookChickenPho);
                 break;

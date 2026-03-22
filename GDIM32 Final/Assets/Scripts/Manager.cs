@@ -32,6 +32,8 @@ public class Manager : MonoBehaviour
         Quest cookChicken = QuestManager.Instance.cookChickenPho;
         Quest cookBeef = QuestManager.Instance.cookBeefPho;
 
+        Debug.Log($"Talk called - gather: {gather.state}, cookChicken: {cookChicken.state}, cookBeef: {cookBeef.state}");
+
         if (gather.state == QuestState.NotStarted) 
         {
             _dialogueController.SetStartNode(_greetingDialogue);
@@ -51,15 +53,20 @@ public class Manager : MonoBehaviour
             _dialogueController.SetStartNode(_chickenPhoDialogue);
     
         }
-        else if (cookChicken.state == QuestState.Completed && cookBeef.state == QuestState.NotStarted) 
+        else if (cookChicken.state == QuestState.InProgress)
         {
-            QuestManager.Instance.ResetQuest();
-            Quest next = QuestManager.Instance.GetNextPhoQuest();
-            QuestManager.Instance.SetQuest(next);
+            _dialogueController.SetStartNode(_chickenPhoDialogue);
+        }
+        else if (cookChicken.state == QuestState.Completed && cookBeef.state == QuestState.NotStarted)
+        {
+             QuestManager.Instance.ResetQuest();
+             QuestManager.Instance.SetQuest(QuestManager.Instance.cookBeefPho);
+             Debug.Log($"After SetQuest, pot recipe: {FindObjectOfType<Pot>()?._targetRecipe?.name ?? "NULL"}");
             _dialogueController.SetStartNode(_beefPhoDialogue);
         }
         else if (cookBeef.state == QuestState.Completed)
         {
+            Debug.Log("beef pho complete, showing completed dialogue");
             QuestManager.Instance.allQuestsComplete = true; 
             _dialogueController.SetStartNode(_completedDialogue);
             _animator.SetTrigger("Jump");
