@@ -29,10 +29,11 @@ Our final project uses three major design patterns—Model–View–Controller (
 We used MVC to structure both the player controller and the NPC interaction system. Scripts like PlayerMovement.cs and PlayerCamera.cs act as Controllers, processing input and updating the View (the player model and camera). The dialogue UI and interaction prompts form the View, while dialogue data and quest states act as the Model. This separation made it easy to update UI, input, or movement logic without breaking the others.
 
 2. Finite State Machine (FSM)  
-Our NPC interaction relies on an FSM to manage states such as Idle, Interactable, InDialogue, and QuestGiven. The Dialogue.cs script transitions between these states when the player looks at an NPC, clicks to open dialogue, chooses branching options, receives a quest, completes a task, and turns it in to unlock new dialogue. FSM prevented tangled conditional logic and made branching dialogue predictable and extendable.
+
+We used finite state machine for the pot where the player cooks the pho. We had three states, Empty, Cooking and Done. Using these different states made it easier to code the different stages of the pho cooking since we were able to make it so the players could interact with the pot and put ingredients during the empty state, but they couldn't intereact with the pot when it was in the cooking state but then they could take the pho out of the pot when it was in the done state. During the done state we were also able to code the pot to play a sound when it finished cooking the pho. There was also a text that could be updated to say something different depending on the state the pot was in.
 
 3. Singleton Pattern  
-We used Singletons for global systems like the DialogueManager and QuestManager. These managers handle displaying prompts, loading dialogue branches, tracking quest progress, and updating NPC responses. Having a single shared instance ensured consistent behavior across scenes and allowed any script to access dialogue or quest data without passing references.
+We used Singletons for global systems like the DialogueManager, QuestManager and IngredientSpawner. These managers handle displaying prompts, loading dialogue branches, tracking quest progress, updating NPC responses and respawning ingredients. Having a single shared instance ensured consistent behavior across scenes and allowed any script to access dialogue or quest data without passing references.
 
 Together, these patterns helped us build a clean, modular interaction system where player actions, NPC dialogue, and quests work smoothly as a unified experience.
 
