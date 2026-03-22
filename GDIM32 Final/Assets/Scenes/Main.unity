@@ -2943,6 +2943,7 @@ MonoBehaviour:
   _completedDialogue: {fileID: 11400000, guid: 5c1e28bbd947e458f8993c15842c2b18, type: 2}
   _chickenPhoRecipe: {fileID: 11400000, guid: 1987774d7f16c4c5a95506e5501c45d8, type: 2}
   _beefPhoRecipe: {fileID: 11400000, guid: c89cfa179f27f4df2add60141cb156da, type: 2}
+  _animator: {fileID: 829851109}
 --- !u!4 &829851107 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d7061d2ec501adb4da1e842bf1f2be57, type: 3}
@@ -2967,6 +2968,11 @@ MonoBehaviour:
   _dialogueStartNode: {fileID: 11400000, guid: 5d1c287850266481fb10417aa1d4954b, type: 2}
   _runningDialogue: 0
   _waitingForPlayerResponse: 0
+--- !u!95 &829851109 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: d7061d2ec501adb4da1e842bf1f2be57, type: 3}
+  m_PrefabInstance: {fileID: 1491968473}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &854454894
 GameObject:
   m_ObjectHideFlags: 0
