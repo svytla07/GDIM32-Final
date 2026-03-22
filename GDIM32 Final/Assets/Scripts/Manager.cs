@@ -12,6 +12,7 @@ public class Manager : MonoBehaviour
   [SerializeField] private DialogueNode _completedDialogue;
   [SerializeField] private Recipe _chickenPhoRecipe;
   [SerializeField] private Recipe _beefPhoRecipe; 
+  [SerializeField] private Animator _animator;
 
 
 
@@ -59,6 +60,7 @@ public class Manager : MonoBehaviour
         else if (cookChicken.state == QuestState.Completed && cookBeef.state == QuestState.Completed)
         {
             _dialogueController.SetStartNode(_completedDialogue);
+            _animator.SetTrigger("Jump");
         }
         _dialogueController.AdvanceDialogue();
     }
