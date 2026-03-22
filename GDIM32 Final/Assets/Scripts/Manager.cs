@@ -48,6 +48,7 @@ public class Manager : MonoBehaviour
             else if (current == _beefPhoRecipe)
             QuestManager.Instance.SetQuest(cookBeef);
             _dialogueController.SetStartNode(_chickenPhoDialogue);
+    
         }
         else if (cookChicken.state == QuestState.Completed && cookBeef.state == QuestState.NotStarted) 
         {

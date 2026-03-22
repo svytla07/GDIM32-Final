@@ -49,6 +49,12 @@ public class QuestManager : MonoBehaviour
         if (quest.recipe != null)
             FindObjectOfType<Pot>()?.UpdateRecipe(quest.recipe);
 
+        if (quest == cookBeefPho)
+        {
+            IngredientSpawner.Instance.RespawnAll();
+    
+        }
+
 
     }
 
@@ -59,8 +65,13 @@ public class QuestManager : MonoBehaviour
         
         if (gatherIngredients.state == QuestState.Completed)
         {
-            SetQuest(cookChickenPho);
+            if (cookChickenPho.state == QuestState.Completed)
+                SetQuest(cookBeefPho);
+            else 
+                SetQuest(cookChickenPho);
         }
+
+    
     }
 
     public void AdvanceQuest()
@@ -90,5 +101,19 @@ public class QuestManager : MonoBehaviour
         }
     else
         return cookChickenPho;
+    }
+
+    public void ResetQuest()
+    {
+        _currentQuest.state = QuestState.NotStarted; 
+        _currentQuest = null; 
+        
+        gatherIngredients.ResetProgress();
+        SetQuest(gatherIngredients);
+
+
+        IngredientSpawner.Instance.RespawnAll();
+
+        Debug.Log("quest reset, ingredients respawn");    
     }
 }

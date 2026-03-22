@@ -1260,9 +1260,7 @@ MonoBehaviour:
   - {fileID: 220482869}
   - {fileID: 606789453}
   - {fileID: 624962242}
-  _startPositions:
-  - {x: 88.78, y: 0, z: 0}
-  _startRotations: []
+  _beefPhoSpawnPoint: {fileID: 0}
 --- !u!4 &352834924
 Transform:
   m_ObjectHideFlags: 0
@@ -2642,7 +2640,6 @@ MonoBehaviour:
   _playerCamera: {fileID: 732389664}
   _noodlesPrefab: {fileID: 131672990}
   _soupPrefab: {fileID: 9053081016006684986, guid: 71e3e555652184d91993f3e2cb4f14e8, type: 3}
-  _heldBowl: {fileID: 0}
 --- !u!1 &732652966
 GameObject:
   m_ObjectHideFlags: 0
@@ -2941,7 +2938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _greetingDialogue: {fileID: 11400000, guid: 5d1c287850266481fb10417aa1d4954b, type: 2}
   _gatheringDialogue: {fileID: 11400000, guid: 2a40196751b3a3547af9be3facc76f2d, type: 2}
-  _chickenPhoDialogue: {fileID: 11400000, guid: 0f6260e0932bf4aec9186d3f2799981b, type: 2}
+  _chickenPhoDialogue: {fileID: 0}
   _beefPhoDialogue: {fileID: 11400000, guid: 5c1e28bbd947e458f8993c15842c2b18, type: 2}
   _completedDialogue: {fileID: 11400000, guid: 5c1e28bbd947e458f8993c15842c2b18, type: 2}
   _chickenPhoRecipe: {fileID: 11400000, guid: 1987774d7f16c4c5a95506e5501c45d8, type: 2}

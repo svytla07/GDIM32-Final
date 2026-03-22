@@ -81,9 +81,6 @@ public class PlayerInteraction : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * interactRange, Color.red);
         if (Physics.Raycast(ray, out RaycastHit hit, interactRange))
         {
-            //Debug.Log($"Hit: {hit.collider.name}");
-
-
             Bowl bowl = hit.collider.GetComponent<Bowl>()
                             ?? hit.collider.GetComponentInParent<Bowl>();
             if (bowl != null)
@@ -98,9 +95,7 @@ public class PlayerInteraction : MonoBehaviour
                 DroppedItem droppedItem = hit.collider.GetComponent<DroppedItem>()
                         ?? hit.collider.GetComponentInParent<DroppedItem>();
                 currentLookingAt = droppedItem;
-                return;
-
-                
+                return;        
             }
         }
         currentLookingAt = null;
@@ -116,7 +111,7 @@ public class PlayerInteraction : MonoBehaviour
         droppedItem.pickedUp = true;
         inventory.AddItem(droppedItem.item);
         QuestManager.Instance.GatherIngredient();
-        Destroy(droppedItem.gameObject);
+        droppedItem.gameObject.SetActive(false);
 
         if (audioSource && pickUpItemAudio)
             audioSource.PlayOneShot(pickUpItemAudio);

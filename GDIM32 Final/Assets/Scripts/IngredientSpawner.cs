@@ -7,9 +7,11 @@ public class IngredientSpawner : MonoBehaviour
     public static IngredientSpawner Instance { get; private set; }
 
     [SerializeField] private List<GameObject> _ingredients = new();
+    [SerializeField] private Transform _beefPhoSpawnPoint;
 
-    [SerializeField] private List<Vector3> _startPositions = new();
-    [SerializeField] private List<Quaternion> _startRotations = new();
+
+    private List<Vector3> _startPositions = new();
+    private List<Quaternion> _startRotations = new();
 
     void Awake()
     {
@@ -19,6 +21,8 @@ public class IngredientSpawner : MonoBehaviour
 
     void Start()
     {
+        _startPositions.Clear();
+        _startRotations.Clear();
         foreach (var ingredient in _ingredients)
         {
             _startPositions.Add(ingredient.transform.position);
@@ -37,6 +41,13 @@ public class IngredientSpawner : MonoBehaviour
 
                 
                 _ingredients[i].SetActive(true);
+
+                 DroppedItem di = _ingredients[i].GetComponent<DroppedItem>();
+                if (di != null)
+                {
+                    di.pickedUp = false; 
+                    di.canPickup = false; 
+                }
 
                 Rigidbody rb = _ingredients[i].GetComponent<Rigidbody>();
                 if (rb != null)

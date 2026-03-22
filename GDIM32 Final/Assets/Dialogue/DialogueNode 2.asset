@@ -18,4 +18,4 @@ MonoBehaviour:
   - alright! just follow the same procedure but with beef instead of chicken!
   _playerChoices: []
   _managerReplies: []
-  questAction: 3
+  questAction: 1

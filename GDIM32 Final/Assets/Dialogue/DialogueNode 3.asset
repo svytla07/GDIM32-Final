@@ -22,5 +22,5 @@ MonoBehaviour:
   - no
   _managerReplies:
   - {fileID: 11400000, guid: f56d8aa159161465195ef79ac818e226, type: 2}
-  - {fileID: 11400000, guid: 1159eb27e03674697981a1d734c4d58c, type: 2}
+  - {fileID: 11400000, guid: b3967056aa424411fafbc82abff2b060, type: 2}
   questAction: 0

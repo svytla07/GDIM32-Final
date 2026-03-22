@@ -40,4 +40,10 @@ public class Quest
             state = QuestState.Completed;
         }
     }
+
+    public void ResetProgress()
+    {
+        currentAmount = 0; 
+        state = QuestState.NotStarted; 
+    }
 }
