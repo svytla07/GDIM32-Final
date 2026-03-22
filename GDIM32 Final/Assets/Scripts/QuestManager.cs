@@ -19,6 +19,8 @@ public class QuestManager : MonoBehaviour
 
     public Quest _currentQuest;
 
+    public bool allQuestsComplete = false; 
+
 
     
 
@@ -109,9 +111,6 @@ public class QuestManager : MonoBehaviour
         _currentQuest = null; 
         
         gatherIngredients.ResetProgress();
-        SetQuest(gatherIngredients);
-
-
         IngredientSpawner.Instance.RespawnAll();
 
         Debug.Log("quest reset, ingredients respawn");    

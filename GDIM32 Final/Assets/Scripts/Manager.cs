@@ -52,12 +52,14 @@ public class Manager : MonoBehaviour
         }
         else if (cookChicken.state == QuestState.Completed && cookBeef.state == QuestState.NotStarted) 
         {
+            QuestManager.Instance.ResetQuest();
             Quest next = QuestManager.Instance.GetNextPhoQuest();
             QuestManager.Instance.SetQuest(next);
             _dialogueController.SetStartNode(_beefPhoDialogue);
         }
-        else if (cookChicken.state == QuestState.Completed && cookBeef.state == QuestState.Completed)
+        else if (cookBeef.state == QuestState.Completed)
         {
+            QuestManager.Instance.allQuestsComplete = true; 
             _dialogueController.SetStartNode(_completedDialogue);
         }
         _dialogueController.AdvanceDialogue();
