@@ -15,7 +15,7 @@ MonoBehaviour:
   npcName: Manager
   _thoughtBubbleSprite: {fileID: 21300000, guid: 0171b2fbe0c674701b7184398d0f550c, type: 3}
   _lines:
-  - 'great! all you have to do is gather the ingredients and put them into the pot! '
+  - 'great! lets make some pho ga! '
   _playerChoices: []
   _managerReplies: []
   questAction: 1

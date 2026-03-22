@@ -17,7 +17,7 @@ MonoBehaviour:
   _lines:
   - hey! are you ready to make some pho?
   _playerChoices:
-  - yes!
+  - 'pho yeah! '
   - no...
   _managerReplies:
   - {fileID: 11400000, guid: 2a40196751b3a3547af9be3facc76f2d, type: 2}

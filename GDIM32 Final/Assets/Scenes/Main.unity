@@ -1248,7 +1248,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 352834922}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe3db5ca8d118469db5b5c95775ef629, type: 3}
   m_Name: 
@@ -1260,6 +1260,9 @@ MonoBehaviour:
   - {fileID: 220482869}
   - {fileID: 606789453}
   - {fileID: 624962242}
+  _startPositions:
+  - {x: 88.78, y: 0, z: 0}
+  _startRotations: []
 --- !u!4 &352834924
 Transform:
   m_ObjectHideFlags: 0
@@ -3191,8 +3194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentRecipe: {fileID: 0}
-  _chickenPhoRecipe: {fileID: 0}
-  _beefPhoRecipe: {fileID: 0}
+  _chickenPhoRecipe: {fileID: 11400000, guid: 1987774d7f16c4c5a95506e5501c45d8, type: 2}
+  _beefPhoRecipe: {fileID: 11400000, guid: c89cfa179f27f4df2add60141cb156da, type: 2}
 --- !u!4 &882022855
 Transform:
   m_ObjectHideFlags: 0
