@@ -12,7 +12,7 @@ public class BowlHolder : MonoBehaviour
     [SerializeField] private GameObject _soupPrefab; 
     
 
-    public GameObject _heldBowl;
+    private GameObject _heldBowl;
     private bool _hasNoodles = false; 
     private bool _hasSoup = false; 
 

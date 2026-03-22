@@ -34,7 +34,7 @@ public class QuestUI : MonoBehaviour
         
         else if (cookChicken.state == QuestState.Completed && cookBeef.state == QuestState.NotStarted)
         
-            questText.text = "Talk to the manager for your next task!";
+            questText.text = "Serve your pho to the manager!";
         
         else if (cookBeef.state == QuestState.Completed && cookChicken.state == QuestState.NotStarted)
         
