@@ -127,12 +127,13 @@ public class BowlHolder : MonoBehaviour
         {
             Instantiate(_currentRecipe.result.prefab, spawnPos, Quaternion.identity);
         }
-        
+
         Debug.Log("manager dialogue moving forward");
     }
 
     public void DismissBowl()
     {
+        if (_heldBowl == null) return;
         _heldBowl.SetActive(false);
         _heldBowl = null; 
     }
