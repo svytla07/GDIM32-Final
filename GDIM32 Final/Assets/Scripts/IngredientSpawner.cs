@@ -8,8 +8,8 @@ public class IngredientSpawner : MonoBehaviour
 
     [SerializeField] private List<GameObject> _ingredients = new();
 
-    private List<Vector3> _startPositions = new();
-    private List<Quaternion> _startRotations = new();
+    [SerializeField] private List<Vector3> _startPositions = new();
+    [SerializeField] private List<Quaternion> _startRotations = new();
 
     void Awake()
     {
@@ -19,7 +19,6 @@ public class IngredientSpawner : MonoBehaviour
 
     void Start()
     {
-       
         foreach (var ingredient in _ingredients)
         {
             _startPositions.Add(ingredient.transform.position);

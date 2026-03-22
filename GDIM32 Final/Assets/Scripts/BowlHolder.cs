@@ -118,7 +118,8 @@ public class BowlHolder : MonoBehaviour
     private void PhoComplete()
     {
         Debug.Log("PHO COMPLETE");
-
+        
+        
         Vector3 spawnPos = _playerCamera.transform.position
                         + _playerCamera.transform.forward * 1.5f;
         Recipe _currentRecipe = QuestManager.Instance?.GetCurrentRecipe();
@@ -127,6 +128,8 @@ public class BowlHolder : MonoBehaviour
             Instantiate(_currentRecipe.result.prefab, spawnPos, Quaternion.identity);
         }
         QuestManager.Instance?.AdvanceQuest(); 
+
+        Debug.Log("manager dialogue moving forward");
     }
     
     
