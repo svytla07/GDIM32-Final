@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+public enum IngredientQuestType { General, Chicken, Beef}
 [RequireComponent(typeof(Collider))]
 public class DroppedItem : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class DroppedItem : MonoBehaviour
     private bool _isBeingDestroyed = false; 
     private bool _initialized = false; 
     public bool canPickup = false; 
+
+    
+
+    public IngredientQuestType questType = IngredientQuestType.General; 
 
 
 

@@ -1171,6 +1171,7 @@ MonoBehaviour:
   pickedUp: 0
   isInPot: 0
   canPickup: 0
+  questType: 0
 --- !u!54 &220482874
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2201,6 +2202,7 @@ MonoBehaviour:
   pickedUp: 0
   isInPot: 0
   canPickup: 0
+  questType: 0
 --- !u!54 &624962244
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3930,6 +3932,7 @@ MonoBehaviour:
   pickedUp: 0
   isInPot: 0
   canPickup: 0
+  questType: 2
 --- !u!114 &1256915500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5209,6 +5212,7 @@ MonoBehaviour:
   pickedUp: 0
   isInPot: 0
   canPickup: 0
+  questType: 0
 --- !u!54 &2015942537
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5750,6 +5754,10 @@ PrefabInstance:
     - target: {fileID: 695662249524178770, guid: 287c7f27764c44981bf3c9949c09bc44, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361574966659758576, guid: 287c7f27764c44981bf3c9949c09bc44, type: 3}
+      propertyPath: questType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

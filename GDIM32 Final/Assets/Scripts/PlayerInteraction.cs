@@ -94,8 +94,13 @@ public class PlayerInteraction : MonoBehaviour
                 Debug.Log("tag matches");
                 DroppedItem droppedItem = hit.collider.GetComponent<DroppedItem>()
                         ?? hit.collider.GetComponentInParent<DroppedItem>();
-                currentLookingAt = droppedItem;
-                return;        
+                if (droppedItem != null && IsIngredientAvailable(droppedItem))
+                {
+                    currentLookingAt = droppedItem;
+                    return; 
+                }
+                
+                   
             }
         }
         currentLookingAt = null;
@@ -122,6 +127,22 @@ public class PlayerInteraction : MonoBehaviour
     public bool IsLookingAtItem()
     {
         return currentLookingAt != null;
+    }
+
+    private bool IsIngredientAvailable(DroppedItem item)
+    {
+        var current = QuestManager.Instance._currentQuest;
+        var cookChicken = QuestManager.Instance.cookChickenPho;
+        if (item.questType == IngredientQuestType.General) return true;
+
+
+
+        if (current == QuestManager.Instance.gatherIngredients && cookChicken.state != QuestState.Completed && item.questType != IngredientQuestType.Beef) return true;
+        if (current == QuestManager.Instance.gatherIngredients && cookChicken.state == QuestState.Completed && item.questType != IngredientQuestType.Chicken) return true;
+
+        if (item.questType == IngredientQuestType.Chicken && current == QuestManager.Instance.cookChickenPho) return true;
+        if (item.questType == IngredientQuestType.Beef && current == QuestManager.Instance.cookBeefPho) return true;
+        return false;
     }
 }
 
