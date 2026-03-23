@@ -29,10 +29,11 @@ Our final project uses three major design patterns—Model–View–Controller (
 We used MVC to structure both the player controller and the NPC interaction system. Scripts like PlayerMovement.cs and PlayerCamera.cs act as Controllers, processing input and updating the View (the player model and camera). The dialogue UI and interaction prompts form the View, while dialogue data and quest states act as the Model. This separation made it easy to update UI, input, or movement logic without breaking the others.
 
 2. Finite State Machine (FSM)  
-Our NPC interaction relies on an FSM to manage states such as Idle, Interactable, InDialogue, and QuestGiven. The Dialogue.cs script transitions between these states when the player looks at an NPC, clicks to open dialogue, chooses branching options, receives a quest, completes a task, and turns it in to unlock new dialogue. FSM prevented tangled conditional logic and made branching dialogue predictable and extendable.
+
+We used finite state machine for the pot where the player cooks the pho. We had three states, Empty, Cooking and Done. Using these different states made it easier to code the different stages of the pho cooking since we were able to make it so the players could interact with the pot and put ingredients during the empty state, but they couldn't intereact with the pot when it was in the cooking state but then they could take the pho out of the pot when it was in the done state. During the done state we were also able to code the pot to play a sound when it finished cooking the pho. There was also a text that could be updated to say something different depending on the state the pot was in.
 
 3. Singleton Pattern  
-We used Singletons for global systems like the DialogueManager and QuestManager. These managers handle displaying prompts, loading dialogue branches, tracking quest progress, and updating NPC responses. Having a single shared instance ensured consistent behavior across scenes and allowed any script to access dialogue or quest data without passing references.
+We used Singletons for global systems like the DialogueManager, QuestManager and IngredientSpawner. These managers handle displaying prompts, loading dialogue branches, tracking quest progress, updating NPC responses and respawning ingredients. Having a single shared instance ensured consistent behavior across scenes and allowed any script to access dialogue or quest data without passing references.
 
 Together, these patterns helped us build a clean, modular interaction system where player actions, NPC dialogue, and quests work smoothly as a unified experience.
 
@@ -52,15 +53,19 @@ Overall, my work helped stabilize the project and ensured the core player experi
 For the Final Project I worked on fixing the mouse movement issues and fine tuning the camera movement and player movement since we had been running into a couple issues where the character wouldn't be able to turn or move properly. To fix the mouse movement I created the PlayerCamera movement that I attached to the Camera object and in it I wrote code to lock the mouse in place as well as added code where if the player presses escape and V they can unlock and lock the mouse so that they could interact with the UI still. I then added variables that took the player's mouse input and then added it the camera's ddirection but used the Math Clamp function so that the Player couldn't turn too far up. I then worked on the quests system, and I tried to use Scriptable Objects at first but then I felt like it was too complicated for there only being two quests so I chose to just use an Enum and C# events. I created Quest, QuestManager and QuestUI classes that all work together to display the quest and the player's progress. I also added code in other classes to update when a task for the quest was completed. 
 
 ### Team Member Name: Mira Liu 
-For the Final Project, I was tasked with programming the state machine for cooking. I also fixed mouse movement and added a crosshair that detects which ingredients the player is looking at through Raycast by turning green. I also went back to fix the item collection system, replacing the previous PNGs with 3D assets. I created a Pot class, a Player Interaction class, and ScriptableObject for the Recipes. I also created ScriptableObjects for the various ingredients and assigned them to the prefabs I created. To fix the camera issue, I had the object spawn based on the MainCamera position instead of the player position. I created UI to display the state of cooking whenever the state changes. I set up the timer as well as how items disappear when they collide with the pot.
+For the Final Project, I was tasked with programming the state machine for cooking. I also fixed mouse movement and added a crosshair that detects which ingredients the player is looking at through Raycast by turning green. I also went back to fix the item collection system, replacing the previous PNGs with 3D assets. I created a Pot class, a Player Interaction class, and ScriptableObject for the Recipes. I also created ScriptableObjects for the various ingredients and assigned them to the prefabs I created. To fix the camera issue, I had the object spawn based on the MainCamera position instead of the player position. I created UI to display the state of cooking whenever the state changes. I set up the timer as well as how items disappear when they collide with the pot. I then created DialogueNodes that prompt quest and quest ui progression. I did this by creating Actions that are set whenever a DialogueNode completes. DialogueNodes are also all stored as ScriptableObjects. I also made BowlHolder class a singleton so there would never be more than one bowl held by the player. Through this I also made it possible to add noodles and then the soup. After the soup is added, the pho bowl will be marked complete. I made the Dialogue work thorugh the Manager class by assigning all the nodes in the Inspector. Quest Ui proceeds through if and else if statements. I also made two different quests yield from the same gather ingredient quest. The pot is a finite state machine which will keep track of Empty, InProgress, and Done. I also created the Ui for the cooking. When the UI for cooking displays done, players are able to add soup into thier bowl to complete the pho. 
 
 ## Open-Source Assets
-[Pot Asset](https://www.cgtrader.com/items/5036369/download-page)
-[food kit assets](https://kenney.nl/assets/food-kit)
-[Terrain texture](https://assetstore.unity.com/packages/tools/terrain/stampit-collection-free-heightmaps-for-unity-6-microverse-gaia-t-218286?clickref=1100lC35LG7U&utm_source=partnerize&utm_medium=affiliate&utm_campaign=unity_affiliate)
 
-[Grass and Vegetation](https://assetstore.unity.com/packages/3d/environments/low-poly-trees-and-vegetation-pack-265300)
+[food kit assets](https://kenney.nl/assets/food-kit)
+
+[Terrain texture](https://assetstore.unity.com/packages/tools/terrain/stampit-collection-free-heightmaps-for-unity-6-microverse-gaia-t-218286?clickref=1100lC35LG7U&utm_source=partnerize&utm_medium=affiliate&utm_campaign=unity_affiliate)
 
 [Cute Animals Player and NPC](https://assetstore.unity.com/packages/3d/characters/animals/little-friends-cartoon-animals-lite-262505)
 
 [Background Audio](https://pixabay.com/sound-effects/musical-loop-file-jazz-waltz-34-beat-bpm132-144689/)
+
+[pick up sound effect](https://pixabay.com/sound-effects/film-special-effects-item-pick-up-38258/)
+
+[drop sound effect](https://pixabay.com/sound-effects/film-special-effects-metal-pipe-329305/)
+
